@@ -42,7 +42,19 @@ app.post("/api/chat", async (req, res) => {
     }
 
     const bytes = CryptoJS.AES.decrypt(p, AES_KEY);
-    const decodedPayload = bytes.toString(CryptoJS.enc.Utf8);
+    let decodedPayload;
+    try {
+      decodedPayload = bytes.toString(CryptoJS.enc.Utf8);
+    } catch (e) {
+      console.error("Decryption stringify error:", e);
+      return res.status(400).json({ error: "Malformed UTF-8 in payload" });
+    }
+
+    if (!decodedPayload) {
+      return res
+        .status(400)
+        .json({ error: "Failed to decrypt payload or empty result" });
+    }
     const { modelId, history, message, attachments, grounding } =
       JSON.parse(decodedPayload);
 
@@ -116,9 +128,16 @@ app.post("/api/chat", async (req, res) => {
     res.setHeader("Connection", "keep-alive");
 
     for await (const chunk of result.stream) {
-      const chunkText = chunk.text();
-      const encoded = CryptoJS.AES.encrypt(chunkText, AES_KEY).toString();
-      res.write(`data: ${JSON.stringify({ t: encoded })}\n\n`);
+      let chunkText = "";
+      try {
+        chunkText = chunk.text();
+      } catch (e) {
+        console.error("Error getting chunk text:", e);
+      }
+      if (chunkText) {
+        const encoded = CryptoJS.AES.encrypt(chunkText, AES_KEY).toString();
+        res.write(`data: ${JSON.stringify({ t: encoded })}\n\n`);
+      }
     }
     res.write("data: [DONE]\n\n");
     res.end();
