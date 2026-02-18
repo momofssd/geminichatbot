@@ -217,76 +217,20 @@ app.post("/api/edit-image", async (req, res) => {
   }
 });
 
-app.post("/api/generate-slides", async (req, res) => {
-  const { topic, count } = req.body;
-  try {
-    const model = genAI.getGenerativeModel({
-      model: "gemini-3-flash-preview",
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: "object",
-          properties: {
-            slides: {
-              type: "array",
-              items: {
-                type: "object",
-                properties: {
-                  title: {
-                    type: "string",
-                    description: "Full sentence action title",
-                  },
-                  content: {
-                    type: "array",
-                    items: { type: "string" },
-                  },
-                  speakerNotes: { type: "string" },
-                },
-                required: ["title", "content"],
-              },
-            },
-            sentiment: {
-              type: "string",
-              enum: ["positive", "neutral", "negative", "urgent"],
-            },
-            themeColor: {
-              type: "string",
-              description: "Hex color code for the theme",
-            },
-          },
-          required: ["slides", "sentiment", "themeColor"],
-        },
-      },
-    });
-
-    const response =
-      await model.generateContent(`Create a McKinsey-style management consulting presentation outline about: ${topic}.
-    I need exactly ${count} slides.
-    
-    Style Guidelines:
-    1. Titles must be "Action Titles" (complete sentences that summarize the slide's main insight).
-    2. Content should be MECE (Mutually Exclusive, Collectively Exhaustive).
-    3. Determine the 'sentiment' of the topic (positive, neutral, negative, urgent).
-    4. Suggest a professional 'themeColor' hex code based on the sentiment (e.g., Navy for neutral, Red for urgent, Green for growth).
-    
-    Output JSON.`);
-
-    const text = response.response.text();
-    res.json(JSON.parse(text));
-  } catch (error) {
-    console.error("Slides Gen Error:", error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
 app.post("/api/analyze-stock", async (req, res) => {
-  const { ticker } = req.body;
+  const { p } = req.body;
   try {
+    const bytes = CryptoJS.AES.decrypt(p, AES_KEY);
+    const decodedPayload = bytes.toString(CryptoJS.enc.Utf8);
+    const { ticker } = JSON.parse(decodedPayload);
+
     const model = genAI.getGenerativeModel({
       model: "gemini-3-pro-preview",
       systemInstruction:
         "You are a world-class financial analyst. Your analysis must be rigorous, citing numbers and specific events. Do not give generic advice.",
     });
+
+    console.log("Generating analysis for ticker:", ticker);
 
     const response = await model.generateContent({
       contents: [
@@ -296,20 +240,50 @@ app.post("/api/analyze-stock", async (req, res) => {
             {
               text: `
     Ticker: ${ticker}
-    Role: Lead Quantitative Researcher & Systematic Trader.
-
-    Objective: Provide a data-driven, quantitative-heavy investment thesis. 
+    Role: You are acting as a Lead Quantitative Researcher and Systematic Macro Trader at a Tier-1 hedge fund. Your objective is to deliver a high-signal, data-dense investment thesis for a specific equity ticker. You do not provide retail-level "advice"; you provide institutional-grade Systematic Intelligence.
 
     Instructions:
-    1. QUANTITATIVE BENCHMARKING: Use Google Search to find 1Y/3Y/5Y returns. Calculate (or find) the Sharpe Ratio and Beta relative to the S&P 500. Identify the stock's Z-score relative to its 50-day and 200-day Moving Averages.
-    2. FACTOR PROFILE: Classify the stock based on Quantitative Factors: 
-      - Momentum (Price strength vs peers)
-      - Quality (ROIC vs WACC, Debt/Equity)
-      - Value (P/E and EV/EBITDA percentiles)
-    3. SENTIMENT QUANTIFICATION: Search recent news/transcripts. Assign a 'Sentiment Score' (-1.0 to 1.0) based on the frequency of bullish vs. bearish keywords.
-    4. TECHNICAL REGIMES: Identify the current market regime (Trend-following or Mean-reverting). List precise Support/Resistance levels based on high-volume nodes.
-    5. RISK MODELING: Quantify the 'Maximum Drawdown' risk and any upcoming 'Volatility Catalysts' (Earnings, Macro data, FDA decisions).
-    6. SYSTEMATIC VERDICT: Provide a FINAL SIGNAL (BUY, SELL, NEUTRAL) based on an expected Value-at-Risk (VaR) framework.
+    When I provide a ticker, perform a deep-dive analysis across the following six quantitative dimensions:
+
+    1. PERFORMANCE & RISK BENCHMARKING
+    Returns: Retrieve 1Y, 3Y, and 5Y total returns. Compare these against the S&P 500 (SPY) performance for the same period.
+
+    Risk Metrics: Calculate/Find the Sharpe Ratio (Risk-adjusted return) and Beta (Systemic risk).
+
+    Statistical Deviation: Identify the current price Z-score relative to the 50-day and 200-day Moving Averages. Is the stock in a "Statistical Stretch" (Z > 2.0 or Z < -2.0)?
+
+    2. MULTI-FACTOR PROFILE
+    Classify the ticker using the following factor-based systematic framework:
+
+    Momentum: Analyze the 6-month and 12-month price strength relative to its sector peers.
+
+    Quality: Report ROIC (Return on Invested Capital) vs. WACC (Weighted Average Cost of Capital) and the Debt-to-Equity ratio.
+
+    Value: Compare current P/E and EV/EBITDA multiples against their 5-year historical percentiles.
+
+    3. SENTIMENT & SIGNAL QUANTIFICATION
+    NLP Analysis: Conduct a search of the most recent earnings call transcripts and news headlines.
+
+    Score: Assign a Sentiment Score (-1.0 to 1.0). Use keyword frequency (e.g., "headwinds," "margin expansion," "guidance cut," "accretive") to weight the score.
+
+    4. TECHNICAL REGIME & INTRADAY VOLATILITY
+    Market Regime: Classify the current state as Trend-following (ADX > 25) or Mean-reverting (RSI/Bollinger extremes).
+
+    Structural Levels: Identify precise Support/Resistance levels based on Volume Profile (high-volume nodes) and Fibonacci extensions.
+
+    Intraday Range: Based on current ATR (Average True Range) and IV (Implied Volatility), project the Potential High and Potential Low for the current trading session.
+
+    5. TAIL RISK & CATALYST MODELING
+    Drawdown: What is the historical Maximum Drawdown (MDD) for this asset?
+
+    Volatility Catalysts: List upcoming macro/micro events (Earnings, CPI data, Regulatory deadlines) that could trigger a "Gamma Squeeze" or a liquidity event.
+
+    6. SYSTEMATIC VERDICT
+    Framework: Use a Value-at-Risk (VaR) mindset.
+
+    Final Signal: Provide a definitive rating: STRONG BUY, ACCUMULATE, NEUTRAL, TRIM, or HARD SELL.
+
+    Logic: Justify the verdict by weighting the Factor Profile vs. Technical Regime.
     `,
             },
           ],
@@ -318,7 +292,12 @@ app.post("/api/analyze-stock", async (req, res) => {
       tools: [{ googleSearch: {} }],
     });
 
-    res.json(response.response);
+    const encryptedResponse = CryptoJS.AES.encrypt(
+      JSON.stringify(response.response),
+      AES_KEY,
+    ).toString();
+    console.log("Analysis generated successfully for:", ticker);
+    res.json({ t: encryptedResponse });
   } catch (error) {
     console.error("Stock Analysis Error:", error);
     res.status(500).json({ error: error.message });

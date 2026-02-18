@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js";
-import { Attachment, ImageGenSize, PresentationStructure } from "../types";
+import { Attachment, ImageGenSize } from "../types";
 
 export const streamChat = async (
   modelId: string,
@@ -83,34 +83,35 @@ export const editImage = async (base64Image: string, prompt: string) => {
   return data.images;
 };
 
-export const generateSlideContent = async (
-  topic: string,
-  count: number,
-): Promise<PresentationStructure | null> => {
-  const response = await fetch("/api/generate-slides", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ topic, count }),
-  });
-  const data = await response.json();
-  if (data.error) throw new Error(data.error);
-  return data;
-};
+export const analyzeStock = async (ticker: string, userSecret: string) => {
+  const payload = CryptoJS.AES.encrypt(
+    JSON.stringify({ ticker }),
+    userSecret,
+  ).toString();
 
-export const analyzeStock = async (ticker: string) => {
   const response = await fetch("/api/analyze-stock", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ticker }),
+    body: JSON.stringify({ p: payload }),
   });
+
   const data = await response.json();
   if (data.error) throw new Error(data.error);
-  // Re-wrap in an object that mimics the expected structure if necessary
-  // The frontend expects a response object that has a text() method or candidates
+
+  if (data.t) {
+    const decrypted = CryptoJS.AES.decrypt(data.t, userSecret).toString(
+      CryptoJS.enc.Utf8,
+    );
+    const parsedData = JSON.parse(decrypted);
+
+    return {
+      text: parsedData.candidates?.[0]?.content?.parts?.[0]?.text || "",
+      candidates: parsedData.candidates,
+    };
+  }
+
   return {
-    response: {
-      text: () => data.candidates?.[0]?.content?.parts?.[0]?.text || "",
-      candidates: data.candidates,
-    },
+    text: data.candidates?.[0]?.content?.parts?.[0]?.text || "",
+    candidates: data.candidates,
   };
 };
