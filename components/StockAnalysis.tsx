@@ -1,14 +1,19 @@
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import {
   Activity,
+  Clock,
   Cpu,
   Database,
   DollarSign,
+  Download,
   Globe,
   Loader2,
   Search,
+  Trash2,
   TrendingUp,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { analyzeStock } from "../services/geminiService";
 
@@ -28,7 +33,80 @@ export const StockAnalysis: React.FC = () => {
   const [searchQueries, setSearchQueries] = useState<string[]>([]);
   const [usage, setUsage] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isExporting, setIsExporting] = useState(false);
+  const [history, setHistory] = useState<any[]>([]);
+  const reportRef = useRef<HTMLDivElement>(null);
   const [userSecret] = useState((import.meta as any).env.VITE_AES_KEY || "");
+
+  // Load history from localStorage
+  useEffect(() => {
+    const savedHistory = localStorage.getItem("stock_analysis_history");
+    if (savedHistory) {
+      try {
+        setHistory(JSON.parse(savedHistory));
+      } catch (e) {
+        console.error("Failed to parse history", e);
+      }
+    }
+  }, []);
+
+  const saveToHistory = (newEntry: any) => {
+    setHistory((prev) => {
+      const updated = [newEntry, ...prev].slice(0, 20);
+      localStorage.setItem("stock_analysis_history", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const loadFromHistory = (entry: any) => {
+    setTicker(entry.ticker);
+    setReport(entry.report);
+    setGroundingSources(entry.groundingSources || []);
+    setSearchQueries(entry.searchQueries || []);
+    setUsage(entry.usage);
+    setError(null);
+  };
+
+  const deleteFromHistory = (e: React.MouseEvent, index: number) => {
+    e.stopPropagation();
+    setHistory((prev) => {
+      const updated = prev.filter((_, i) => i !== index);
+      localStorage.setItem("stock_analysis_history", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const handleDownloadPDF = async () => {
+    if (!reportRef.current || !ticker) return;
+
+    try {
+      setIsExporting(true);
+      const element = reportRef.current;
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        backgroundColor: "#1a1a1a",
+        logging: false,
+        useCORS: true,
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: [canvas.width, canvas.height],
+      });
+
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+      pdf.save(
+        `Stock_Analysis_${ticker}_${new Date().toISOString().split("T")[0]}.pdf`,
+      );
+    } catch (err) {
+      console.error("PDF generation failed:", err);
+      alert("Failed to generate PDF. Please try again.");
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   const handleAnalyze = async (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -49,26 +127,35 @@ export const StockAnalysis: React.FC = () => {
           clearInterval(phaseTimer);
           return prev;
         });
-      }, 8000);
+      }, 5000);
 
       const response = await analyzeStock(ticker, userSecret);
       clearInterval(phaseTimer);
       setCurrentPhase(PHASES.length);
 
-      if (response.text) setReport(response.text);
-      if (response.usage) setUsage(response.usage);
-
+      const newReport = response.text || "";
+      const newUsage = response.usage || null;
       const chunks =
         response.candidates?.[0]?.groundingMetadata?.groundingChunks;
-      if (chunks) {
-        setGroundingSources(
-          chunks.map((c: any) => c.web).filter((w: any) => w),
-        );
-      }
+      const newSources = chunks
+        ? chunks.map((c: any) => c.web).filter((w: any) => w)
+        : [];
+      const newQueries =
+        response.candidates?.[0]?.groundingMetadata?.webSearchQueries || [];
 
-      const queries =
-        response.candidates?.[0]?.groundingMetadata?.webSearchQueries;
-      if (queries) setSearchQueries(queries);
+      setReport(newReport);
+      setUsage(newUsage);
+      setGroundingSources(newSources);
+      setSearchQueries(newQueries);
+
+      saveToHistory({
+        ticker: ticker.toUpperCase(),
+        date: new Date().toISOString(),
+        report: newReport,
+        usage: newUsage,
+        groundingSources: newSources,
+        searchQueries: newQueries,
+      });
     } catch (err: any) {
       console.error(err);
       setError(err.message || "Failed to analyze stock.");
@@ -94,6 +181,31 @@ export const StockAnalysis: React.FC = () => {
 
       {/* Search bar */}
       <div className="bg-[#262730] p-8 rounded-3xl border border-white/5 mb-8 shadow-xl">
+        {history.length > 0 && (
+          <div className="mb-6 flex flex-wrap gap-2">
+            <p className="w-full text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">
+              Recent History
+            </p>
+            {history.map((entry, i) => (
+              <div
+                key={i}
+                onClick={() => loadFromHistory(entry)}
+                className="group flex items-center gap-2 bg-black/30 hover:bg-black/50 border border-white/5 px-3 py-1.5 rounded-lg cursor-pointer transition-all"
+              >
+                <Clock size={12} className="text-gray-500" />
+                <span className="text-xs font-bold text-gray-300">
+                  {entry.ticker}
+                </span>
+                <button
+                  onClick={(e) => deleteFromHistory(e, i)}
+                  className="opacity-0 group-hover:opacity-100 hover:text-red-400 transition-all"
+                >
+                  <Trash2 size={12} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
         <form onSubmit={handleAnalyze} className="max-w-2xl mx-auto">
           <div className="relative flex items-center">
             <DollarSign className="absolute left-6 text-gray-400" size={24} />
@@ -177,13 +289,28 @@ export const StockAnalysis: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main report */}
           <div className="lg:col-span-3 space-y-6">
-            <div className="bg-[#262730]/50 p-10 rounded-3xl border border-white/5">
+            <div
+              ref={reportRef}
+              className="bg-[#262730]/50 p-10 rounded-3xl border border-white/5"
+            >
               {/* Report header */}
               <div className="flex justify-between items-center mb-8 pb-4 border-b border-white/5">
                 <h3 className="text-2xl font-bold text-white flex items-center gap-3 uppercase tracking-wider">
                   <Activity size={24} className="text-[#FF4B4B]" />
                   Thesis: {ticker}
                 </h3>
+                <button
+                  onClick={handleDownloadPDF}
+                  disabled={isExporting}
+                  className="flex items-center gap-2 bg-[#FF4B4B]/10 hover:bg-[#FF4B4B]/20 text-[#FF4B4B] px-4 py-2 rounded-xl border border-[#FF4B4B]/30 transition-all text-sm font-bold disabled:opacity-50"
+                >
+                  {isExporting ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <Download size={16} />
+                  )}
+                  {isExporting ? "GENERATING..." : "DOWNLOAD PDF"}
+                </button>
               </div>
 
               {/* Report body */}

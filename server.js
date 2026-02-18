@@ -37,7 +37,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const GROUNDING_TOOL = { googleSearch: {} };
 
 // ─── System instruction that mandates multi-source research ─────────────────
-const ANALYST_SYSTEM_INSTRUCTION = `You are a Lead Quantitative Researcher and Systematic Macro Trader at a Tier-1 hedge fund.
+const ANALYST_SYSTEM_INSTRUCTION = `You are a Senior Equity Research Analyst at a Tier-1 hedge fund, with expertise in quantitative factor modeling and fundamental analysis.
 
 RESEARCH MANDATE — NON-NEGOTIABLE:
 You MUST search and cite AT LEAST 8–10 distinct, authoritative sources before forming any conclusion.
@@ -324,19 +324,24 @@ app.post("/api/analyze-stock", async (req, res) => {
     const allSearchQueries = [];
     let totalTokens = 0;
 
-    // ── Run three focused research phases sequentially ──────────────────────
-    for (let i = 0; i < phasePrompts.length; i++) {
-      console.log(`[${ticker}] Running Phase ${i + 1}/3...`);
-      const phaseResponse = await model.generateContent({
-        contents: [{ role: "user", parts: [{ text: phasePrompts[i] }] }],
+    // ── Run three focused research phases in parallel for speed ──────────────
+    console.log(`[${ticker}] Running phases in parallel...`);
+    const phasePromises = phasePrompts.map((p, i) => {
+      console.log(`[${ticker}] Phase ${i + 1} started.`);
+      return model.generateContent({
+        contents: [{ role: "user", parts: [{ text: p }] }],
         tools: [GROUNDING_TOOL],
       });
+    });
 
+    const phaseResponses = await Promise.all(phasePromises);
+
+    for (let i = 0; i < phaseResponses.length; i++) {
+      const phaseResponse = phaseResponses[i];
       const candidate = phaseResponse.response.candidates?.[0];
       const text = candidate?.content?.parts?.[0]?.text || "";
       phaseResults.push(text);
 
-      // Collect grounding metadata from each phase
       const meta = candidate?.groundingMetadata;
       if (meta?.groundingChunks)
         allGroundingChunks.push(...meta.groundingChunks);
@@ -344,10 +349,7 @@ app.post("/api/analyze-stock", async (req, res) => {
         allSearchQueries.push(...meta.webSearchQueries);
 
       totalTokens += phaseResponse.response.usageMetadata?.totalTokenCount || 0;
-
-      console.log(
-        `[${ticker}] Phase ${i + 1} complete — sources: ${meta?.groundingChunks?.length || 0}, queries: ${meta?.webSearchQueries?.length || 0}`,
-      );
+      console.log(`[${ticker}] Phase ${i + 1} results gathered.`);
     }
 
     // ── Final synthesis call ─────────────────────────────────────────────────
