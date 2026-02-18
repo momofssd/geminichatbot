@@ -107,11 +107,13 @@ export const analyzeStock = async (ticker: string, userSecret: string) => {
     return {
       text: parsedData.candidates?.[0]?.content?.parts?.[0]?.text || "",
       candidates: parsedData.candidates,
+      usage: parsedData.usageMetadata,
     };
   }
 
   return {
     text: data.candidates?.[0]?.content?.parts?.[0]?.text || "",
     candidates: data.candidates,
+    usage: data.usageMetadata,
   };
 };
