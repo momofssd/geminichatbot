@@ -7,12 +7,32 @@ import {
   buildSynthesisPrompt,
 } from "../prompts.js";
 
+export const getStockHistoryHandler = async (req, res) => {
+  try {
+    if (!global.stockHistory) global.stockHistory = [];
+    res.json(global.stockHistory);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const deleteStockHistoryHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (!global.stockHistory) global.stockHistory = [];
+    global.stockHistory = global.stockHistory.filter((h) => h.id !== id);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const analyzeStockHandler = async (req, res) => {
   const { p } = req.body;
   try {
     const bytes = CryptoJS.AES.decrypt(p, AES_KEY);
     const decodedPayload = bytes.toString(CryptoJS.enc.Utf8);
-    const { ticker } = JSON.parse(decodedPayload);
+    const { ticker, saveToHistory } = JSON.parse(decodedPayload);
     const today = new Date().toISOString().split("T")[0];
 
     console.log(`[${ticker}] Starting phased analysis — ${today}`);
@@ -97,6 +117,25 @@ export const analyzeStockHandler = async (req, res) => {
       JSON.stringify(responseObj),
       AES_KEY,
     ).toString();
+
+    if (saveToHistory) {
+      const historyEntry = {
+        id: Date.now().toString(),
+        ticker: ticker.toUpperCase(),
+        date: new Date().toISOString(),
+        report: responseObj.candidates[0].content.parts[0].text,
+        usage: responseObj.usageMetadata,
+        groundingSources:
+          responseObj.candidates[0].groundingMetadata.groundingChunks.map(
+            (c) => c.web,
+          ),
+        searchQueries:
+          responseObj.candidates[0].groundingMetadata.webSearchQueries,
+      };
+      if (!global.stockHistory) global.stockHistory = [];
+      global.stockHistory.unshift(historyEntry);
+      global.stockHistory = global.stockHistory.slice(0, 50);
+    }
 
     res.json({ t: encryptedResponse });
   } catch (error) {

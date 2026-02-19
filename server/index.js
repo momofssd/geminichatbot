@@ -5,7 +5,11 @@ import { fileURLToPath } from "url";
 import { port } from "./config.js";
 import { chatHandler } from "./routes/chat.js";
 import { editImageHandler, generateImageHandler } from "./routes/image.js";
-import { analyzeStockHandler } from "./routes/stock.js";
+import {
+  analyzeStockHandler,
+  deleteStockHistoryHandler,
+  getStockHistoryHandler,
+} from "./routes/stock.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,6 +26,8 @@ app.post("/api/chat", chatHandler);
 app.post("/api/generate-image", generateImageHandler);
 app.post("/api/edit-image", editImageHandler);
 app.post("/api/analyze-stock", analyzeStockHandler);
+app.get("/api/stock-history", getStockHistoryHandler);
+app.delete("/api/stock-history/:id", deleteStockHistoryHandler);
 
 // SPA fallback
 app.get("*", (req, res) => {

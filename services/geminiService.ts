@@ -83,9 +83,27 @@ export const editImage = async (base64Image: string, prompt: string) => {
   return data.images;
 };
 
-export const analyzeStock = async (ticker: string, userSecret: string) => {
+export const getStockHistory = async () => {
+  const response = await fetch("/api/stock-history");
+  if (!response.ok) throw new Error("Failed to fetch stock history");
+  return response.json();
+};
+
+export const deleteStockHistory = async (id: string) => {
+  const response = await fetch(`/api/stock-history/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) throw new Error("Failed to delete stock history");
+  return response.json();
+};
+
+export const analyzeStock = async (
+  ticker: string,
+  userSecret: string,
+  saveToHistory: boolean = false,
+) => {
   const payload = CryptoJS.AES.encrypt(
-    JSON.stringify({ ticker }),
+    JSON.stringify({ ticker, saveToHistory }),
     userSecret,
   ).toString();
 

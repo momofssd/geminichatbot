@@ -15,7 +15,11 @@ import {
 } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { analyzeStock } from "../services/geminiService";
+import {
+  analyzeStock,
+  deleteStockHistory,
+  getStockHistory,
+} from "../services/geminiService";
 
 const PHASES = [
   { label: "Fundamentals & SEC Filings", icon: Database },
@@ -38,25 +42,19 @@ export const StockAnalysis: React.FC = () => {
   const reportRef = useRef<HTMLDivElement>(null);
   const [userSecret] = useState((import.meta as any).env.VITE_AES_KEY || "");
 
-  // Load history from localStorage
-  useEffect(() => {
-    const savedHistory = localStorage.getItem("stock_analysis_history");
-    if (savedHistory) {
-      try {
-        setHistory(JSON.parse(savedHistory));
-      } catch (e) {
-        console.error("Failed to parse history", e);
-      }
+  // Load history from server
+  const fetchHistory = async () => {
+    try {
+      const data = await getStockHistory();
+      setHistory(data);
+    } catch (e) {
+      console.error("Failed to fetch history", e);
     }
-  }, []);
-
-  const saveToHistory = (newEntry: any) => {
-    setHistory((prev) => {
-      const updated = [newEntry, ...prev].slice(0, 20);
-      localStorage.setItem("stock_analysis_history", JSON.stringify(updated));
-      return updated;
-    });
   };
+
+  useEffect(() => {
+    fetchHistory();
+  }, []);
 
   const loadFromHistory = (entry: any) => {
     setTicker(entry.ticker);
@@ -67,13 +65,14 @@ export const StockAnalysis: React.FC = () => {
     setError(null);
   };
 
-  const deleteFromHistory = (e: React.MouseEvent, index: number) => {
+  const deleteFromHistory = async (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
-    setHistory((prev) => {
-      const updated = prev.filter((_, i) => i !== index);
-      localStorage.setItem("stock_analysis_history", JSON.stringify(updated));
-      return updated;
-    });
+    try {
+      await deleteStockHistory(id);
+      await fetchHistory();
+    } catch (e) {
+      console.error("Failed to delete history", e);
+    }
   };
 
   const handleDownloadPDF = async () => {
@@ -129,9 +128,10 @@ export const StockAnalysis: React.FC = () => {
         });
       }, 5000);
 
-      const response = await analyzeStock(ticker, userSecret);
+      const response = await analyzeStock(ticker, userSecret, true);
       clearInterval(phaseTimer);
       setCurrentPhase(PHASES.length);
+      await fetchHistory();
 
       const newReport = response.text || "";
       const newUsage = response.usage || null;
@@ -147,15 +147,6 @@ export const StockAnalysis: React.FC = () => {
       setUsage(newUsage);
       setGroundingSources(newSources);
       setSearchQueries(newQueries);
-
-      saveToHistory({
-        ticker: ticker.toUpperCase(),
-        date: new Date().toISOString(),
-        report: newReport,
-        usage: newUsage,
-        groundingSources: newSources,
-        searchQueries: newQueries,
-      });
     } catch (err: any) {
       console.error(err);
       setError(err.message || "Failed to analyze stock.");
@@ -188,7 +179,7 @@ export const StockAnalysis: React.FC = () => {
             </p>
             {history.map((entry, i) => (
               <div
-                key={i}
+                key={entry.id || i}
                 onClick={() => loadFromHistory(entry)}
                 className="group flex items-center gap-2 bg-black/30 hover:bg-black/50 border border-white/5 px-3 py-1.5 rounded-lg cursor-pointer transition-all"
               >
@@ -197,7 +188,7 @@ export const StockAnalysis: React.FC = () => {
                   {entry.ticker}
                 </span>
                 <button
-                  onClick={(e) => deleteFromHistory(e, i)}
+                  onClick={(e) => deleteFromHistory(e, entry.id)}
                   className="opacity-0 group-hover:opacity-100 hover:text-red-400 transition-all"
                 >
                   <Trash2 size={12} />
