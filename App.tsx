@@ -22,9 +22,21 @@ function App() {
         onNewChat={handleNewChat}
       />
       <main className="flex-1 h-full relative">
-        {currentMode === AppMode.CHAT && <ChatInterface key={chatSessionKey} />}
-        {currentMode === AppMode.IMAGE_STUDIO && <ImageStudio />}
-        {currentMode === AppMode.STOCK_ANALYSIS && <StockAnalysis />}
+        <div
+          className={`h-full ${currentMode === AppMode.CHAT ? "block" : "hidden"}`}
+        >
+          <ChatInterface key={chatSessionKey} />
+        </div>
+        <div
+          className={`h-full ${currentMode === AppMode.IMAGE_STUDIO ? "block" : "hidden"}`}
+        >
+          <ImageStudio />
+        </div>
+        <div
+          className={`h-full ${currentMode === AppMode.STOCK_ANALYSIS ? "block" : "hidden"}`}
+        >
+          <StockAnalysis />
+        </div>
       </main>
     </div>
   );

@@ -101,9 +101,10 @@ export const analyzeStock = async (
   ticker: string,
   userSecret: string,
   saveToHistory: boolean = false,
+  modelId: string = "gemini-3-pro-preview",
 ) => {
   const payload = CryptoJS.AES.encrypt(
-    JSON.stringify({ ticker, saveToHistory }),
+    JSON.stringify({ ticker, saveToHistory, modelId }),
     userSecret,
   ).toString();
 

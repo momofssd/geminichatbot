@@ -32,13 +32,15 @@ export const analyzeStockHandler = async (req, res) => {
   try {
     const bytes = CryptoJS.AES.decrypt(p, AES_KEY);
     const decodedPayload = bytes.toString(CryptoJS.enc.Utf8);
-    const { ticker, saveToHistory } = JSON.parse(decodedPayload);
+    const { ticker, modelId } = JSON.parse(decodedPayload);
     const today = new Date().toISOString().split("T")[0];
 
-    console.log(`[${ticker}] Starting phased analysis — ${today}`);
+    console.log(
+      `[${ticker}] Starting phased analysis with ${modelId} — ${today}`,
+    );
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-3-pro-preview",
+      model: modelId || "gemini-3-pro-preview",
       systemInstruction: ANALYST_SYSTEM_INSTRUCTION,
     });
 
@@ -118,24 +120,23 @@ export const analyzeStockHandler = async (req, res) => {
       AES_KEY,
     ).toString();
 
-    if (saveToHistory) {
-      const historyEntry = {
-        id: Date.now().toString(),
-        ticker: ticker.toUpperCase(),
-        date: new Date().toISOString(),
-        report: responseObj.candidates[0].content.parts[0].text,
-        usage: responseObj.usageMetadata,
-        groundingSources:
-          responseObj.candidates[0].groundingMetadata.groundingChunks.map(
-            (c) => c.web,
-          ),
-        searchQueries:
-          responseObj.candidates[0].groundingMetadata.webSearchQueries,
-      };
-      if (!global.stockHistory) global.stockHistory = [];
-      global.stockHistory.unshift(historyEntry);
-      global.stockHistory = global.stockHistory.slice(0, 50);
-    }
+    // Save to history automatically
+    const historyEntry = {
+      id: Date.now().toString(),
+      ticker: ticker.toUpperCase(),
+      date: new Date().toISOString(),
+      report: responseObj.candidates[0].content.parts[0].text,
+      usage: responseObj.usageMetadata,
+      groundingSources:
+        responseObj.candidates[0].groundingMetadata.groundingChunks.map(
+          (c) => c.web,
+        ),
+      searchQueries:
+        responseObj.candidates[0].groundingMetadata.webSearchQueries,
+    };
+    if (!global.stockHistory) global.stockHistory = [];
+    global.stockHistory.unshift(historyEntry);
+    global.stockHistory = global.stockHistory.slice(0, 50);
 
     res.json({ t: encryptedResponse });
   } catch (error) {
