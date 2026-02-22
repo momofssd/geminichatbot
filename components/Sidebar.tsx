@@ -24,7 +24,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className="p-6">
         <div className="flex items-center gap-3 mb-8">
           <h1 className="text-xl font-bold text-white tracking-tight hidden md:block">
-            OmniGem Assistant
+            AI Assistant
           </h1>
           <Sparkles className="w-5 h-5 text-white md:hidden" />
         </div>
