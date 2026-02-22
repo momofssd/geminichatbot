@@ -158,6 +158,7 @@ export const analyzeStockHandler = async (req, res) => {
     const historyEntry = {
       id,
       ticker: ticker.toUpperCase(),
+      modelId,
       date: new Date().toISOString(),
       report: responseObj.candidates[0].content.parts[0].text,
       usage: responseObj.usageMetadata,

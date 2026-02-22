@@ -245,9 +245,17 @@ export const StockAnalysis: React.FC = () => {
                     <div className="bg-[#FF4B4B]/20 p-1.5 rounded-lg">
                       <TrendingUp size={14} className="text-[#FF4B4B]" />
                     </div>
-                    <span className="text-sm font-black text-white">
-                      {entry.ticker}
-                    </span>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-black text-white leading-tight">
+                        {entry.ticker}
+                      </span>
+                      {entry.modelId && (
+                        <span className="text-[8px] font-bold text-gray-400 uppercase tracking-tighter">
+                          {STOCK_MODELS.find((m) => m.id === entry.modelId)
+                            ?.label || entry.modelId}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <button
                     onClick={(e) => deleteFromHistory(e, entry.id)}

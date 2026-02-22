@@ -64,7 +64,7 @@ ${phaseResults[1]}
 --- PHASE 3: TECHNICALS, OPTIONS & INSTITUTIONAL FLOW ---
 ${phaseResults[2]}
 
-Now synthesize everything into a complete Institutional Investment Thesis covering ALL six dimensions below.
+Now synthesize everything into a complete Institutional Investment Thesis covering ALL seven dimensions below.
 Every claim must reference a specific number, date, or source. Do not repeat generic statements.
 
 1. PERFORMANCE & RISK BENCHMARKING
@@ -92,8 +92,41 @@ Every claim must reference a specific number, date, or source. Do not repeat gen
    - Short interest, put/call ratio, and options flow signals
    - Upcoming catalysts with estimated impact magnitude
 
-6. SYSTEMATIC VERDICT
+6. SUGGESTED ENTRY POINT PRICING (HIGH-CONFIDENCE)
+   Provide THREE tiered entry scenarios, each with a specific price and confidence level:
+
+   TIER 1 — AGGRESSIVE ENTRY (Confidence: 60–70%)
+   - Price: derived from the nearest high-volume support node on the volume profile
+   - Basis: current price relative to 20-day VWAP + lower Bollinger Band confluence
+   - Condition: valid only if RSI > 40 and price is within 3% of support
+   - Stop-loss: 1× ATR below entry
+   - Initial target: nearest resistance level (R1)
+
+   TIER 2 — BASE CASE ENTRY (Confidence: 75–85%)
+   - Price: derived from DCF intrinsic value with a 10–15% margin-of-safety discount
+   - Basis: cross-verified by EV/EBITDA mean-reversion to 3-year median multiple
+   - Condition: valid only if price is at or below this level AND macro regime is neutral-to-bullish
+   - Stop-loss: 8% below entry OR structural support break, whichever comes first
+   - Initial target: consensus analyst price target (low end)
+
+   TIER 3 — HIGH-CONVICTION ENTRY (Confidence: 85–95%)
+   - Price: defined as the level where ALL of the following align simultaneously:
+     (a) Price ≤ DCF fair value with 20% margin of safety
+     (b) RSI ≤ 35 (oversold on weekly chart)
+     (c) Institutional accumulation signal (rising 13F ownership or notable insider buying on Form 4)
+     (d) Options flow shows net bullish positioning (call skew or large call sweeps)
+   - Basis: cite the specific values from Phase 1–3 that confirm or deny each condition today
+   - Stop-loss: 10% below entry or prior 52-week low, whichever is tighter
+   - Initial target: analyst consensus price target (midpoint); extended target: DCF fair value
+
+   For each tier, state:
+   - EXACT suggested entry price (e.g., "$142.50")
+   - Current price distance to entry (e.g., "−4.2% from today's close of $148.80")
+   - Estimated reward-to-risk ratio (R:R)
+   - Whether the entry condition is currently MET, NEAR (within 5%), or NOT YET
+
+7. SYSTEMATIC VERDICT
    - Final Rating: STRONG BUY | ACCUMULATE | NEUTRAL | TRIM | HARD SELL
    - VaR-based justification weighting Factor Profile vs Technical Regime
-   - One-paragraph conviction statement`;
+   - One-paragraph conviction statement referencing the highest-confidence entry tier`;
 }

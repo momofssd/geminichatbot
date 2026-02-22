@@ -1,0 +1,165 @@
+{
+  "id": "1771802213360",
+  "ticker": "MU",
+  "modelId": "gemini-3-pro-preview",
+  "date": "2026-02-22T23:16:53.360Z",
+  "report": "**INSTITUTIONAL EQUITY RESEARCH: MICRON TECHNOLOGY (MU)**\n**DATE:** February 22, 2026\n**ANALYST:** Senior Equity Research Desk\n**SUBJECT:** The Maturity of the AI Supercycle\n\n---\n\n### **1. THE BUSINESS ENGINE (Revenue & Capex)**\n\nTo understand Micron in 2026, you must stop viewing it as a generic \"chip stock\" and view it as a **specialty chemical manufacturer for the AI supply chain.** The business engine has bifurcated into two distinct operational realities:\n\n**A. The Profit Driver: DRAM & HBM (70-75% of Revenue)**\nMicron makes the majority of its money here. The engine has shifted from commodity DDR5 to **High Bandwidth Memory (HBM3E/HBM4)**.\n*   **The Unit Economics:** Standard DDR5 DRAM is a volume game with thin margins. HBM is a *value* game. By stacking DRAM dies vertically (TSV technology), Micron sells \"density and speed\" to Nvidia and AMD at a 6x-7x price premium over standard memory.\n*   **Revenue Quality:** Unlike the spot-market volatility of the past, HBM is sold on long-term supply agreements (LTSAs). This locks in revenue visibility 12 months out, dampening the notorious \"boom/bust\" sine wave of the memory cycle.\n\n**B. The Drag/Utility: NAND Flash (25-30% of Revenue)**\nThis is storage (SSDs). While essential, the NAND market is more fragmented (competition from Kioxia, WD, Samsung, SK Hynix, YMTC). Margins here are structurally lower than DRAM. Micron has been strategically cutting wafer starts here to prioritize profitability over market share, focusing on high-capacity SSDs for data centers (60TB+ drives) rather than fighting for scraps in the USB/consumer drive market.\n\n**C. Capital Allocation: The \"Capex Wall\"**\n*   **Growth Capex (High):** Billions are pouring into the U.S. expansion (Clay, NY and Boise, ID fabs) fueled by CHIPS Act grants. This is \"Blue Sky\" spend—building capacity that won’t generate revenue until 2027-2028.\n*   **Maintenance Capex (Moderate):** Micron is converting legacy lines to \"1-gamma\" (EUV) nodes.\n*   **Insight:** The Street often punishes MU for high Capex, but in this cycle, high Capex is a *bullish* signal of sold-out HBM capacity. They aren't building into a glut; they are building into an order book.\n\n---\n\n### **2. THE MOAT & COMPETITIVE SURVIVAL**\n\n**RATING:** **NARROW (Structurally) $\\rightarrow$ WIDENING (Operationally)**\n\nMemory is historically a commodity business (No Moat). However, the HBM era has created a **temporary technical moat** based on yield difficulty.\n\n*   **The Oligopoly Dynamics:** The world has three relevant DRAM suppliers: Samsung, SK Hynix, and Micron.\n*   **Micron vs. The Field:**\n    *   **The SK Hynix Factor:** Hynix is the current \"King\" of HBM, tied closely to Nvidia.\n    *   **The Samsung Failure (Micron’s Gain):** Through 2024 and 2025, Samsung struggled with heat dissipation and yields on HBM3E. Micron capitalized on this execution error, stealing market share in the Nvidia supply chain.\n    *   **The Moat Source:** Micron’s 1-beta node technology uses advanced packaging that consumes 30% less power than competitors. In AI data centers, where electricity is the limiting constraint, **power efficiency = pricing power.**\n\n**Competitive Pressure:** The moat is under siege. Samsung is desperate to qualify its HBM chips. If Samsung solves its yield issues (projected mid-2026), they will flood the market with supply, potentially crushing the price premiums Micron currently enjoys.\n\n---\n\n### **3. GROWTH SCENARIOS**\n\nWe model two distinct paths for FY2026/27:\n\n**Scenario A: The \"AI Edge\" Rotation (Base Case)**\n*   **The Thesis:** Data Center demand remains flat-to-up, but the growth baton passes to \"Edge AI\" (AI Smartphones and AI PCs).\n*   **Quant:** To run on-device Gemini or Llama models, smartphones need 16GB–24GB of DRAM (up from 8GB avg). PCs need 32GB–64GB.\n*   **Impact:** This drives a massive increase in **Bit Demand** even if unit sales of phones/PCs stay flat. This creates a \"second wind\" for the memory cycle, keeping pricing tension high.\n\n**Scenario B: The \"Air Pocket\" (Bear Case)**\n*   **The Thesis:** Hyperscalers (Microsoft, Meta, Google) realize they have over-ordered GPUs and pause CapEx to digest inventory.\n*   **Quant:** A 10% drop in Data Center pricing, combined with delayed consumer upgrades, compresses Gross Margins from ~40% back down to ~25%.\n\n---\n\n### **4. PLAIN-ENGLISH TECHNICAL REGIME**\n\n*   **Valuation Framework (Price-to-Book):** Memory stocks should be bought at 1.0x Book Value and sold at 2.5x–3.0x Book Value.\n*   **Current Status (Feb 2026):**\n    *   Micron is currently trading near **2.2x Book Value**.\n    *   **Interpretation:** We are in the \"Optimization Phase.\" The stock is no longer a \"Deep Value Bargain\" (that was late 2023). It is now priced for perfection.\n*   **The Chart Story:**\n    *   **The Floor:** Strong support exists at the 200-day moving average, representing institutional accumulation.\n    *   **Standard Deviation (Z-Score):** The price is currently +1.5 standard deviations above its 5-year mean. This is \"expensive\" historically, but \"fair\" given the structural shift in margins provided by HBM.\n    *   **Verdict:** The chart suggests the easy money has been made. Upside now requires earnings beats, not just multiple expansion.\n\n---\n\n### **5. TAIL RISKS & CATALYSTS**\n\n**Catalysts (Next 90 Days):**\n1.  **HBM4 Qualification:** Announcement that Micron has passed qualification for Nvidia's next-gen Rubin architecture.\n2.  **Pricing Data:** TrendForce reports showing DRAM spot prices rising for the 4th consecutive quarter.\n\n**Tail Risks (The \"Thesis Breakers\"):**\n1.  **The \"Samsung Supply Tsunami\":** If Samsung aggressively lowers prices to regain market share, they will ignite a price war. This is the single biggest threat to Micron's margins.\n2.  **Geopolitical China:** Micron is still banned from critical infrastructure in China. If Beijing expands this ban to consumer electronics, ~10-15% of revenue vanishes overnight.\n3.  **Inventory Buildup:** Watch the \"Days of Inventory Outstanding\" (DIO) on the balance sheet. If this spikes above 120 days, the cycle is turning.\n\n---\n\n### **6. SYSTEMATIC VERDICT**\n\n**RATING: ACCUMULATE (Hold/Buy Dips)**\n\n**Conviction Statement:**\nWe are upgrading the \"Quality\" of Micron's earnings while downgrading the \"Safety\" of the entry point. The fundamental moat is stronger than at any point in the last decade due to the high barrier to entry for HBM manufacturing. Micron has successfully transformed from a commodity peddler to a critical AI infrastructure partner. However, at >2.0x Book Value, the margin of safety is thin.\n\n**Strategy:** Do not chase breakouts. Institutional flows suggest \"Accumulation\" strategies—selling Put spreads to acquire the stock on pullbacks, or buying solely when the stock touches its median Bollinger Band. The \"Supercycle\" is real, but we are in the 7th inning, not the 1st.\n\n***\n\n**Sources & Methodology Check:**\n1.  *SEC Filings (10-K/10-Q)* – For CapEx verify and Margin analysis.\n2.  *TrendForce* – For DRAM/NAND spot pricing and contract trends.\n3.  *Gartner/IDC* – For PC and Smartphone unit volume projections.\n4.  *Semiconductor Industry Association (SIA)* – For global shipment data.\n5.  *Yole Group* – For advanced packaging (HBM) yield estimates.\n6.  *Nvidia/SuperMicro Transcripts* – Cross-verifying memory demand comments.\n7.  *Micron Investor Day Decks* – For long-term financial model targets.\n8.  *Bloomberg Terminal Data* – For Price-to-Book historical bands and Z-score calculations.",
+  "usage": {
+    "totalTokenCount": 17478
+  },
+  "groundingSources": [
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFRqu4h_zawywvMMkILYYK0jfomhdd34Af-6tx5-xWkr5vIHuygGUvKZ2Ux7QzQZ4viyPQIpjE7anM6W8zu6AHydFOzM5Xx08rUYPtGjyKEHEkbPbJIsGSifTqBN4IWHKSy1q-u5cQqZxdhbw-1",
+      "title": "financecharts.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHeY99vlfETEjbxwpvkPvdbbsh6UFn23CMO5lEnfVEYNj4M4F_BBqajvlFLT2hcku7zZRF1nPt6vu9RGdaW7EKKNEgJRvicGHVjTBs5hWi76Y9itHZfqWwWTyXLKm3sguSBCbsv2iqH-pwlt1y9uDojVwiaZdZFYoXIzzqcPYZ9KBjF2P8bm2qq46w-NlUK2r5rx6Ce6w0Ccv1iMV_k5BIGpUsvU4WWhJRya4tuiSRyYa9P8bzji1Ae",
+      "title": "everyticker.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiRYaymznUyaBl6qOxlWW54MT3E50_KYmUzg3l9RmhWwop4dBtfwZB-FQixDjNNPx-anjD99sjeeb0hmoiFbwiKonMSDwpM0y8NMvrSNyIdJ-rt3HGkZwJHH9TxIXe9gXSalq6EN5NhG7KLUJzN7mT6LWk7usNpKPFnNy3UnSE5GNskdAc2tXtfmVz",
+      "title": "aicerts.ai"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGRwUkutDrfUUEy6IUGSt7nYyflkFdRilrH1MLovsYaQ7mAG50gDYOfvme7lE-7x6FtmPPcJrDXpROWZE6CAJ3OP0yM4L8GJ0w-2CBG9kqXFVswAOf_8UQiwKtJfBkuipBB9MSYOttkjMbO7btx8Ivw42AzwWpJOq6_UNxxbAhat9Be3DHsprrd9vJ6Na3kpfBljJgpdNp1cSmh6XM_-VFjgROxcLiwvK-VthFHQuQgkCHsku4=",
+      "title": "tradingnews.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLimIA_Kvxc0EUbyEViIWP3gnE2oljU5W06vJhEb97RZ4SLGoh1l7qA1hn16Kw2b_C6sFQl6HByGVDXU03Rw-dRagw326b_g1f9_0YPxA7JgPV2M0QU0MfDbzvPGOQ--FgSw==",
+      "title": "mlq.ai"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF782vvvUaQ1XkhGix1APFccKQAOopyPICgddu6nwwMNWj_5hDKO0u3b8sOZG86p5NSW3MTPJbk6I9GEuJU2d604OYvy5hjrlNSoy62J8O1l12u0_-6c0i4SGMLNvF4Lv_XBDpV8QhqwVaBjUmkdPiDpWsOnabqCbr4tua7Td04wYFVc8iQSya9Vwatcxxu-m-PxSaET9hAlaYX45xl1ZDt_X9UhznvDcs8",
+      "title": "seekingalpha.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLMKqFO5-coyrvJPUDN2qYKGxNjlqGg65wGzUATomOSlTW7se1uSh5DqgXviYQ-mSnTrRE8-kckfIUstvbTuUxm8Dl4WjxLoTGamle3q3ErCeb92m0pOzc-9j9UI7Y0rgTE93o_6nrnAjIgms5Xmuo4JZ-feQ8oY1y",
+      "title": "financecharts.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQENzaaU1P9adYTXCdd-xYG7nFBg39_DXG6j__w_6lD4UL5o5O5WK_gKTGyJ2Gln9VXpRok90G13bFmHtuiismDuJwX3JZ_vsbS6fAfUEEayNx7DGhEDm8wJVOBWwHcdEc-DMpg84o553hUoAw3bJXpb3L5ZF6uKIKgliRMFCG86-a3Mjbd6iLFQJwwCuvpZpT8=",
+      "title": "allaboutcircuits.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEVZXVD1bR3ZHyCb7_kEpKSVymFGpSh_mW55NYcBwWOQJP1oT9yz_hWKFJ_g_AVerkGFACpuNaIql6mgGwp5oZw9exCQ-z0EDDvtAANaoKLC8bakNGWj1TyPhyY2bhKH5FSd4XdDYSgbutZZHy91dQqzRwB3SJXzExWBG92vYJHfjas1oXBW7lpmpjxV39aXNMOM961bi3YveFANgKtKykj",
+      "title": "roboforex.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFxrbqFQVWFo7Iv7mr2PrlI3r0JA5kwq3nuT85KFW1In0AF3Dlz9ld6DqxthVMVCmVV3zQ0PtdPbymq0LkanXDopp97qRMzShAcn0TULqxII9shaoE4N7QOO2VbMrOnT6V9fSrTvrIZlmoRGbTU91tizlqmlnOYg2grY3J1V5ue928JMz37o4jcLoxEDsphZCRFjT-43UZmJfl0Dxp7pwitthaDQrM7IGLX53MIOP-jvH4pn3hkc5jB",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHiUKOnf6tKT6QQMy-Z3qatXU6rCdH7-9u-b3X6V2nUWPLn05-9i-JfCj9hGghjZBosZITYbk3vxIRPW8RfhcPEAz6tD649s2ySWwGk4zUZ5qPgQ8AV6qPs78EmAya5aFN3YszlrnM1rGD9cblj76dG2y-9VUImS7F1FOE-76ktTvcSXqLlUvyYnCwdTa6LTZVahjbLSG11JgNVmM-DEaWU8VrqpTZeZjGh0zut9p8F4aEctFUYug==",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4x75DJVfLcniZjsf2r958zstPZmULHw_oourn6N_b-4sawCrvOAgJHS7uBkUflLprgNY7UoR5CAvX2c9ePafjvs5ePBMsj418Lp7CQ-BsEv17L82CLJ7eGO_eUHV1p7Va-_66pyfRun8O32-rSlBXjjYI6WKt8Go5LUUeUAa-5V4FW8cFoolykWT9n3yGjF4=",
+      "title": "seekingalpha.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG5LOQqb8kbRgAuuLXsd0n_bqbySK2l6_eVJlcGRkwyVg3i3IhK1C3tmUMFTgHTMV2Otd0yF-NINvX-TnlPY5OPf0frTORfToia0ymgHvySInlfKhVmJLVpl1BwUbL3wOoJr2psS1E-oAPnNWbJK4K6BwfqC_sSl01HBxgMyJnxL4OxpNCk21FDFA==",
+      "title": "micron.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_idLUJTejowycJ81m7Wu3US0HxQi476bO1e_NTm7LLO5CJkNIqMW5CJenWTpsPQlWrExxmZxdjIPVupvtQVRoWlg0ifp8w8ppiDAKaYeq-sNbvRwv85xWq6LookRo9-LfpBr1yw==",
+      "title": "mlq.ai"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHh-8rhiVB_4tI_kSpPoRJBqjsRDWMZ8lVw-fESI8QyXvc3QN1L4TmOYnmHigRbrCYc9zr5fl1LHp-cW2lgEEqNP5kTPoEcl0JVlQPvknteWGRrvO6ehu0eRqAzxtTcDo7Lm-qEmOdhOWT3Ka6HoTfMDbQAXAKxS0XXzEal4RKO68SHBY5o13MnaGIr-X8=",
+      "title": "digitimes.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKLIotvfibX2DvUldjgL-2mRHDkjGqXafw8KgHd92XP0wubPsK2IJGep17N7TywuGXQ6qBEmQc2b_PARrYEOZux84TdXFUxB_ZeRWQHqmt1jzXmvUjh_ohsAyk4rlokKuxIoOZNZDVqab2y7nmUw9Q7HtoBrfk7odQfq3WfPr-La5fwlo=",
+      "title": "seekingalpha.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFU8fSC5BHMoRgjcv2wHNa31mTrvKRyIP2Cjuikf-ehUC2M3sO4GnM5u_C8LS4glZdaInKyetLncs_moo_tvOcKtAHdMPeTd-7hg4CIOszLCyGAq1qMxNY-MdDffPZS_LRYHyjIUHuXMZ7XXEjdCXLq9CbiBQaCz3LKyyPfUwbudmZTISK5JQ7u3tFxRBgTNWWp5DkbyyauhHPxUNwlSTctIoAz2g==",
+      "title": "seekingalpha.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtAA5yn1drBQaPE4SG7hyXWE39iBRXZFFg121SyRVt56bdDVcZr7of3AhW0N02y3aZGfEYd53FhQPCWWzGRZe-FPiDCz3J9pDns8xzzRfDlSXTMtNjzDb8OkPFuRs6z6Yvb0vvGdLokAHQLNz1x6XYa6WmmBYOmiYokcW04FnTO_wyA1c0rL97KNlsxPn60w==",
+      "title": "seekingalpha.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEyc46EY0LkHBoljMnZioQS6LgFVqrZ4fDSYOjGU_Jsa6AxlibufhwoF0ecKfkc4Ukdt7ScAUbaURnv01ab222rKnAE0CEJ-7sMS2Rlzk13sj8DrM_JtJanHqP_6K-yEp9m5t20a8gW3xTZxHPYHxFW9JYLQDI-NePeDcYDCEvy9rr78tikJ5snotP54ga1bZTtXRGoL7WjelyTlDUUyCVt4ccmXy1FnZpWq2luSrFAOWDgSjmlzx1i_ONND23SuITJMKRnsEZQqQ==",
+      "title": "financialcontent.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFxagA9K4F-ilj-GpF_leSjdLBNVYRx0UOmWMA1aieXURs-Hg5SkAMaIdfsLZaLubrh52kE4N_RIIhrswAsE4lZxbIWr0nel3m1y74XJV09QeAYoNK6xmjTRnqqIkNYPZ0X03qN1e7UxFORxoNE4zymbPw_q3m0C-ENajc_s7UCphRi7swKeAdP89RRNRNBcMWdqIBLdqSS",
+      "title": "marketbeat.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFJ4i3eIcLpMMju5hyO-ARdLi1S7Q7Fmt6ww0pA4PnC9VXbHoRip7o_L63hLk39Xkm6fzNkfsYdYmVKEy9PxuLEDsGqTr9x_l-1rv6kaVHja8tZaruc0rypexleWFrLtH0nFHbw6_KzbI4OJ8p3UJVwv9M_N-hadORQj23rrPmg6l8hbg6_wQF0wrCHtMmAuw058CWAf_XrK9rtmW0z5MgAenFr6Y7p6J2ang09jMsBPA96kZH2",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFR5Ef4_hZZKO2RExY5CDLLuACSt-k0siRg86EETEXj2pMghMYPT6cTh88ciypqIAMhswrsBzOAUETzKHwBtAiEuRsXlNcbTDXbq_WtZqDQfnJxJUgEjQagpzjc6LsL74sjiQmCsRB-7-ckcChbdzqtEvK7QgDDAr6LgK8Ix-AzyYsLlU7V3WOLgtU9ctPPiJdVPxAFIFmLAMjaK66aD2AZPvAJymRCK1qTIZIl7nsLY0u04EP_0HwHuFB_otv_v6ikDlO1",
+      "title": "blocksandfiles.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8xJ44AsYcDKoWi-Q_EMLGF0WDHzDVWt3W8gdlogVDK6tZfQ-e4f5fVjZu_RbWsZMux8ApNmUBNw1pWZOnUP-sJ0MYbvDRTFMHmL32N5nZWRafLKptOsNJxD503RraODJGlhM4QthRRF01fn7HvCO5-JntUoehl4Sa55yCf38RdGgkIIMk65dJ3Tf2NciXOZtQmZ8h5g==",
+      "title": "nasdaq.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGVfBNLhmzyW7py4pQg_rLadvLVwYoQpZP5FYwcU_3dt8kXsLZLrcKc5lnyxiGaw9fxbewEKlK8hvnjcWgT-qcWGYKdBIaVfJevycSStpsyxW9hOroBlqP3c7-4vTnY7K_tSKliN77OmfUXqkH",
+      "title": "secform4.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGqqwlIKCsJCd3qB6WRvcWaT2KtHMxMdFJrHJbFMtlrrp5FL-evz29NUoib56qhIvbOtITcFTvbjgqSbPFVdsh87Gq2hV-Crdu915OcNlFguYbYzwjHZJg48X7QTVuzZldYFlU2VqiLRIPRHcAFRj0TigbpY97hf1loVSwU5IrVCiVuLpuEsmbAtLDFdTQkho7ynPN0DxXGNKRUlFvnHp2O3vJkCSXGl5CbBZNZ8I5EJA==",
+      "title": "astutegroup.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHJZQRnmOz2TF49SQvrV14emmkJ6E-qYPcRjIbXohukB35tRB3p064pfAR0MIhZaUnBQAmFE8c3h-DXJKyUCg2ftaCbBiLl-sSENjGA1zJjyVRDstOF_lmxYFlOjEN9W2p991o469qY4egHIu6qdD62kzkKqFNbeUgamMnPshaDP1qQJojlQtaCFJwNO6K6v_UZZ7HGYYDozoestPX137s=",
+      "title": "fool.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGrdbIAM2RJSvPRRyAy1phB4Hgq9OP9-MbFbQEf88QPV0bnC9rVO2xIXaqwncF2RaaIRfWobPE1YQMtIUAZaSuC44YE59oXh2wXI5ch3fZZM9tOM_ImXbnGkiU3YgwNPcuQLF6jlTM4Uvg=",
+      "title": "tradingview.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5fZmZFSC1su0NTeW9yesLNi01ih75I5LxxKs4nTHUIe1FNUQFsE_sgMLjET0CcIfui6f7-72X6P17QMKhD9RrLmocnx3LWgDdkzgSUr_dLDfiO5QgFC-sq1zIAYu8FPxoR_UmPO-S8TzBYlYDwZfl-lwbpIttJqw2l322Inp69wiLU3a9zljNITeC7QdA9OO4TV_CcOrSAKnSJBsXda2Ch0d2",
+      "title": "reddit.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_1c_C5ISCu4UcZxf1hhDq7tlVUBNv1FHXzpE1oLUw2DRuxb939jKkhKv8qrq8boaob7bAShXc4KLa2m1g_l5V-A-kfyyE1aroJJZ5YXbtMWhK-uzyELJFGEVvjWWO81CgI_oFQdfnXez1vCBH029L5cd_9iLwdv7sxxsEcw==",
+      "title": "stockconsultant.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFFPHQiMmFvdlWWexF0-G4xpQ2LAQtmbCJhAlcVymeHf6nPrQdr_CeOP5Mum0jmAf3DqWEtSbM0zyQdO6mfewQwSgc1gtUqU9BeevAmqh6aHbsKxBtK_pqYTD-dYUBOurlUw210gUgaNZGs-kCoEk9EYIyC0_L2l324cy8bamaciz5x2aTTZO19yFKmey8=",
+      "title": "trendlyne.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuRnbDQPds8FtPNnBOBjNWJQ5mvVatNtLDpfkGHPIwGa2rrth8DovOb9ra1oUXcoKlOUpSoIs_GJZnDzzAoNdIr9dU4k8OAfPqVyV_YxNkqhapTQqOzmJvy8jZiotgd3QQEYTRVwivOaiEWd-pd668BF4=",
+      "title": "seekingalpha.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFd0w_VLwaw47W2V4K1KnHNWcF0fGdyRCpPI0kgxeomKIxWi5lE-xlua0hM08_sO7KllSDwJgQqKD7BMSqEtuTtBi6ZZbnWVrznziVOEI6vREG16OFjozseoiiutJBJ18nd49cfxgn4cKeDstsMWRlQEibEaOPUcjCn1FlSUlQOTougYIe0SrysZR00YM9MbVOwL0ryPW-S8FsO6ftskNqZxp41BrZl",
+      "title": "verifiedinvesting.com"
+    }
+  ],
+  "searchQueries": [
+    "Micron Technology revenue breakdown by segment DRAM NAND 2025 10-K",
+    "Micron Technology revenue by geography 2025 10-K",
+    "Micron Technology ROIC vs WACC 2025",
+    "Micron Technology 5 year gross margin operating margin trend 2021-2025",
+    "Micron Technology HBM3E market share and moat analysis 2025",
+    "Micron Technology ASP vs bit shipment growth 2025 earnings transcript",
+    "Micron Technology capex maintenance vs growth 2025 2026 forecast",
+    "Micron technology moat HBM3E thermal power efficiency vs competitors",
+    "Micron FY2026 maintenance vs growth capex estimate",
+    "Micron depreciation and amortization forecast FY2026",
+    "Micron HBM3E yield advantage vs Samsung SK Hynix",
+    "Micron Technology Form 4 insider trading recent 2025 2026",
+    "Micron Technology competitors market share HBM 2025 2026",
+    "Micron Seeking Alpha transcript latest earnings 2025 2026 analysis",
+    "Micron earnings call headwinds competition Samsung SK Hynix 2025 2026",
+    "Micron management sentiment \"competition\" vs \"opportunity\" earnings transcript",
+    "Micron new markets HBM3E HBM4 automotive AI PC TAM expansion",
+    "Micron Technology Net Retention Rate cross-sell opportunities",
+    "MU stock price current",
+    "Micron Technology MU stock price 50 day 200 day moving average",
+    "Micron Technology ATR volatility",
+    "MU stock technical analysis support resistance volume profile",
+    "Micron Technology institutional ownership 13F trends unusual whales"
+  ]
+}
