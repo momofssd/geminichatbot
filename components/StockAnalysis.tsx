@@ -228,7 +228,7 @@ export const StockAnalysis: React.FC = () => {
       </div>
 
       {/* History Bar */}
-      <div className="mb-12 overflow-x-auto no-scrollbar pb-4 min-h-[160px]">
+      <div className="mb-12 overflow-x-auto no-scrollbar pb-4 min-h-[130px]">
         <h3 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
           <Clock size={14} /> Recent Analysis History
         </h3>
