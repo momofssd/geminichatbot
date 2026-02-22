@@ -1,4 +1,7 @@
 import CryptoJS from "crypto-js";
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 import { genAI, GROUNDING_TOOL } from "../ai.js";
 import { AES_KEY } from "../config.js";
 import {
@@ -7,10 +10,40 @@ import {
   buildSynthesisPrompt,
 } from "../prompts.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const HISTORY_DIR = path.resolve(process.cwd(), "server/stockSearch");
+
+console.log("Stock History Directory:", HISTORY_DIR);
+
+// Ensure the directory exists
+const ensureDir = async () => {
+  try {
+    await fs.mkdir(HISTORY_DIR, { recursive: true });
+    console.log("Stock History Directory ensured at:", HISTORY_DIR);
+  } catch (err) {
+    console.error("Error creating stockSearch directory:", err);
+  }
+};
+ensureDir();
+
 export const getStockHistoryHandler = async (req, res) => {
   try {
-    if (!global.stockHistory) global.stockHistory = [];
-    res.json(global.stockHistory);
+    const files = await fs.readdir(HISTORY_DIR);
+    const history = await Promise.all(
+      files
+        .filter((file) => file.endsWith(".json"))
+        .map(async (file) => {
+          const content = await fs.readFile(
+            path.join(HISTORY_DIR, file),
+            "utf8",
+          );
+          return JSON.parse(content);
+        }),
+    );
+    // Sort by date descending
+    history.sort((a, b) => new Date(b.date) - new Date(a.date));
+    res.json(history);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -19,8 +52,8 @@ export const getStockHistoryHandler = async (req, res) => {
 export const deleteStockHistoryHandler = async (req, res) => {
   const { id } = req.params;
   try {
-    if (!global.stockHistory) global.stockHistory = [];
-    global.stockHistory = global.stockHistory.filter((h) => h.id !== id);
+    const filePath = path.join(HISTORY_DIR, `${id}.json`);
+    await fs.unlink(filePath);
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -121,8 +154,9 @@ export const analyzeStockHandler = async (req, res) => {
     ).toString();
 
     // Save to history automatically
+    const id = Date.now().toString();
     const historyEntry = {
-      id: Date.now().toString(),
+      id,
       ticker: ticker.toUpperCase(),
       date: new Date().toISOString(),
       report: responseObj.candidates[0].content.parts[0].text,
@@ -134,9 +168,9 @@ export const analyzeStockHandler = async (req, res) => {
       searchQueries:
         responseObj.candidates[0].groundingMetadata.webSearchQueries,
     };
-    if (!global.stockHistory) global.stockHistory = [];
-    global.stockHistory.unshift(historyEntry);
-    global.stockHistory = global.stockHistory.slice(0, 50);
+
+    const filePath = path.join(HISTORY_DIR, `${id}.json`);
+    await fs.writeFile(filePath, JSON.stringify(historyEntry, null, 2));
 
     res.json({ t: encryptedResponse });
   } catch (error) {

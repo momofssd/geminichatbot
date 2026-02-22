@@ -228,9 +228,12 @@ export const StockAnalysis: React.FC = () => {
       </div>
 
       {/* History Bar */}
-      {history.length > 0 && (
-        <div className="mb-8 overflow-x-auto no-scrollbar pb-2">
-          <div className="flex gap-4">
+      <div className="mb-12 overflow-x-auto no-scrollbar pb-4 min-h-[160px]">
+        <h3 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+          <Clock size={14} /> Recent Analysis History
+        </h3>
+        {history.length > 0 ? (
+          <div className="flex gap-4 pb-2">
             {history.map((entry, i) => (
               <div
                 key={entry.id || i}
@@ -261,8 +264,14 @@ export const StockAnalysis: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="bg-[#262730]/30 border border-dashed border-white/10 rounded-2xl p-6 text-center">
+            <p className="text-gray-600 text-sm italic">
+              No recent searches found. Run an analysis to see history.
+            </p>
+          </div>
+        )}
+      </div>
 
       {/* Search bar */}
       <div className="bg-[#262730] p-8 rounded-3xl border border-white/5 mb-8 shadow-xl">
