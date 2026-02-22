@@ -53,80 +53,67 @@ export function buildPhasePrompts(ticker, today) {
 export function buildSynthesisPrompt(ticker, phaseResults, today) {
   return `Today is ${today}. Ticker: ${ticker}
 
-You have completed three phases of deep research. Below are your findings:
+SYSTEM ROLE: You are a Lead Investment Strategist. Your goal is to synthesize the provided research into a high-conviction execution plan. 
 
---- PHASE 1: FUNDAMENTALS & VALUATION ---
-${phaseResults[0]}
+--- INPUT DATA FROM PREVIOUS PHASES ---
+PHASE 1 (FUNDAMENTALS): ${phaseResults[0]}
+PHASE 2 (SENTIMENT): ${phaseResults[1]}
+PHASE 3 (TECHNICALS): ${phaseResults[2]}
 
---- PHASE 2: SENTIMENT, NEWS & CATALYSTS ---
-${phaseResults[1]}
+--- MANDATORY SYNTHESIS STRUCTURE ---
 
---- PHASE 3: TECHNICALS, OPTIONS & INSTITUTIONAL FLOW ---
-${phaseResults[2]}
+### 1. QUANTITATIVE FACTOR PROFILE
+- **Momentum:** 6M/12M relative strength vs S&P 500 and Sector ETF.
+- **Quality:** ROIC vs. WACC spread and Debt/EBITDA. 
+- **Value:** Current P/E vs. 5Y Median and DCF-derived Intrinsic Value.
 
-Now synthesize everything into a complete Institutional Investment Thesis covering ALL seven dimensions below.
-Every claim must reference a specific number, date, or source. Do not repeat generic statements.
+### 2. SIGNAL CONFLUENCE & SENTIMENT
+- **NLP Sentiment Score:** [-1.0 to +1.0] Based on Earnings Call & News. Cite 3 "Power Keywords."
+- **Institutional Flow:** Compare 13F trends vs. Options Put/Call skew. Is "Smart Money" hedging or accumulating?
 
-1. PERFORMANCE & RISK BENCHMARKING
-   - 1Y, 3Y, 5Y total returns vs SPY
-   - Sharpe Ratio and Beta
-   - Price Z-score vs 50-day MA and 200-day MA (flag if Z > 2.0 or < -2.0)
+### 3. VOLATILITY & REGIME IDENTIFICATION
+- **Market Regime:** (e.g., "Bullish Trend-Following" if ADX > 25 & Price > 200SMA).
+- **Expected Move:** Calculate the implied move for the next 30 days based on ATR and IV Rank.
 
-2. MULTI-FACTOR PROFILE
-   - Momentum: 6-month and 12-month price strength vs sector peers
-   - Quality: ROIC vs WACC, Debt-to-Equity
-   - Value: P/E and EV/EBITDA vs 5-year percentile and competitor benchmarks
+---
 
-3. SENTIMENT & SIGNAL QUANTIFICATION
-   - NLP Sentiment Score (-1.0 to +1.0) with keyword breakdown
-   - Key quotes from most recent earnings call
-   - Analyst consensus, price target range, and recent rating changes
+### 4. MULTI-TIERED ENTRY STRATEGY (PRECISION EXECUTION)
+Calculate three distinct entry tiers. For each, you MUST provide the "Confidence Logic."
 
-4. TECHNICAL REGIME & INTRADAY VOLATILITY
-   - Market regime: Trend-Following (ADX > 25) or Mean-Reverting
-   - Key support/resistance levels with volume profile basis
-   - Projected intraday range based on ATR and IV
+| TIER | SENTIMENT/TYPE | ENTRY PRICE | DISTANCE FROM CURRENT | R:R RATIO | CONFIDENCE LEVEL |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Tier 1** | Aggressive (Tactical) | [Price] | [%] | [1:X] | 60-70% |
+| **Tier 2** | Base Case (Value) | [Price] | [%] | [1:X] | 75-85% |
+| **Tier 3** | High-Conviction (Institutional) | [Price] | [%] | [1:X] | 85-95% |
 
-5. TAIL RISK & CATALYST MODELING
-   - Historical Maximum Drawdown (MDD)
-   - Short interest, put/call ratio, and options flow signals
-   - Upcoming catalysts with estimated impact magnitude
+#### [DETAILED ENTRY SPECIFICATIONS]
 
-6. SUGGESTED ENTRY POINT PRICING (HIGH-CONFIDENCE)
-   Provide THREE tiered entry scenarios, each with a specific price and confidence level:
+**TIER 1 — AGGRESSIVE ENTRY (Momentum/Support)**
+- **Logic:** Derived from the nearest High-Volume Node (HVN) or 20-day VWAP.
+- **Validation:** Price must be within 3% of the Lower Bollinger Band or S1 Support.
+- **Action:** Valid if RSI > 40 (Not falling knife). 
+- **Stop-Loss:** Entry - (1.5 × ATR).
 
-   TIER 1 — AGGRESSIVE ENTRY (Confidence: 60–70%)
-   - Price: derived from the nearest high-volume support node on the volume profile
-   - Basis: current price relative to 20-day VWAP + lower Bollinger Band confluence
-   - Condition: valid only if RSI > 40 and price is within 3% of support
-   - Stop-loss: 1× ATR below entry
-   - Initial target: nearest resistance level (R1)
+**TIER 2 — BASE CASE (Fair Value Mean Reversion)**
+- **Logic:** DCF Intrinsic Value with a 15% Margin of Safety.
+- **Validation:** Cross-check with 3-year median EV/EBITDA multiple.
+- **Action:** Only valid if Macro Regime (FRED data) is stable/bullish.
+- **Stop-Loss:** 8% or structural break of the 200-day MA.
 
-   TIER 2 — BASE CASE ENTRY (Confidence: 75–85%)
-   - Price: derived from DCF intrinsic value with a 10–15% margin-of-safety discount
-   - Basis: cross-verified by EV/EBITDA mean-reversion to 3-year median multiple
-   - Condition: valid only if price is at or below this level AND macro regime is neutral-to-bullish
-   - Stop-loss: 8% below entry OR structural support break, whichever comes first
-   - Initial target: consensus analyst price target (low end)
+**TIER 3 — HIGH-CONVICTION (The "Golden" Entry)**
+- **Logic:** Where Fundamental Undervaluation meets Technical Exhaustion.
+- **Conditions (Must meet 3 of 4):**
+  1. Price ≤ DCF Value - 20% Margin of Safety.
+  2. Weekly RSI ≤ 35.
+  3. Net Institutional Accumulation (13F) + Insider Buying.
+  4. Options Skew is Bullish (Put/Call < 0.7 or large Call sweeps).
+- **Confidence Basis:** Explain exactly why this level is high-conviction (e.g., "Historical support at $X has held 4 times since 2022").
 
-   TIER 3 — HIGH-CONVICTION ENTRY (Confidence: 85–95%)
-   - Price: defined as the level where ALL of the following align simultaneously:
-     (a) Price ≤ DCF fair value with 20% margin of safety
-     (b) RSI ≤ 35 (oversold on weekly chart)
-     (c) Institutional accumulation signal (rising 13F ownership or notable insider buying on Form 4)
-     (d) Options flow shows net bullish positioning (call skew or large call sweeps)
-   - Basis: cite the specific values from Phase 1–3 that confirm or deny each condition today
-   - Stop-loss: 10% below entry or prior 52-week low, whichever is tighter
-   - Initial target: analyst consensus price target (midpoint); extended target: DCF fair value
+---
 
-   For each tier, state:
-   - EXACT suggested entry price (e.g., "$142.50")
-   - Current price distance to entry (e.g., "−4.2% from today's close of $148.80")
-   - Estimated reward-to-risk ratio (R:R)
-   - Whether the entry condition is currently MET, NEAR (within 5%), or NOT YET
+### 5. SYSTEMATIC VERDICT & VaR JUSTIFICATION
+- **Final Rating:** [STRONG BUY | ACCUMULATE | NEUTRAL | TRIM | HARD SELL]
+- **Conviction Statement:** Provide a 3-sentence summary. The first sentence must state which Entry Tier is most likely to be hit in the next 14 business days based on current ATR.
 
-7. SYSTEMATIC VERDICT
-   - Final Rating: STRONG BUY | ACCUMULATE | NEUTRAL | TRIM | HARD SELL
-   - VaR-based justification weighting Factor Profile vs Technical Regime
-   - One-paragraph conviction statement referencing the highest-confidence entry tier`;
+**Requirement:** Every price target or ratio MUST cite the specific source from the phase results. Do not use generic ranges.`;
 }

@@ -1,0 +1,215 @@
+{
+  "id": "1771803744837",
+  "ticker": "AMZN",
+  "modelId": "gemini-3-flash-preview",
+  "date": "2026-02-22T23:42:24.837Z",
+  "report": "**EQUITY RESEARCH MEMORANDUM**\n**TO:** Investment Committee\n**FROM:** Senior Equity Research Analyst\n**DATE:** February 22, 2026\n**TICKER:** AMZN (Amazon.com, Inc.)\n**SUBJECT:** Institutional Investment Thesis & Factor Valuation\n\n---\n\n### **1. PERFORMANCE & RISK BENCHMARKING**\n*   **Total Returns vs. SPY:**\n    *   **1-Year:** +14.2% (AMZN) vs. +11.5% (SPY).\n    *   **3-Year (CAGR):** +18.4% (AMZN) vs. +9.2% (SPY).\n    *   **5-Year (CAGR):** +4.8% (AMZN) vs. +10.1% (SPY). *Note: Underperformance driven by the 2022–2023 tech reset and current \"Capex Winter.\"* [Source: 1.11, 1.25, Yahoo Finance]\n*   **Risk Metrics:** \n    *   **Beta (5Y Monthly):** 1.14 (Moderate systematic risk premium). [Source: MarketBeat]\n    *   **Sharpe Ratio (TTM):** 1.18 (Adjusted for Feb 2026 volatility). [Source: Financhill]\n*   **Price Z-Scores (as of Feb 20, 2026 Close: $210.11):**\n    *   **50-Day MA Z-Score:** **-0.95** (Price is nearly 1σ below short-term mean).\n    *   **200-Day MA Z-Score:** **-0.36** (Long-term structure remains intact but weakening). \n    *   *Status: No extreme technical exhaustion (Z < -2.0) detected.* [Source: Phase 3 Calculations]\n\n### **2. MULTI-FACTOR PROFILE**\n*   **Momentum:** **Weak/Negative.** AMZN is currently underperforming 82% of the Consumer Discretionary sector over a 3-month lookback. Price is 6.2% below the 200-day SMA ($223.97). [Source: Phase 3.1]\n*   **Quality:** **Top-Tier.** ROIC of **14.23%** consistently exceeds WACC of **11.34%** (Spread: +2.89%). Leverage is exceptionally conservative with a **0.16 D/E ratio** and a **35.2x interest coverage ratio**. [Source: 1.13, 1.19]\n*   **Value:** **Deep Value (Historical Context).** TTM P/E of **29.3x** is in the **bottom 15th percentile** of its 5-year range (Avg: 58.4x). EV/EBITDA of **15.6x** is a ~27% discount to its 5-year average. [Source: 1.1, 1.33]\n\n### **3. SENTIMENT & SIGNAL QUANTIFICATION**\n*   **NLP Sentiment Score:** **+0.25 (Cautiously Bullish)**\n    *   *Positive Catalyst:* AWS re-acceleration (+24%) and Ad-revenue growth (+22%).\n    *   *Negative Catalyst:* \"Sticker shock\" from the **$200B 2026 Capex guidance** (Source: CEO Andy Jassy, Q4 Call).\n*   **Analyst Consensus:** \n    *   **Mean PT:** $272.50 (+29.7% upside).\n    *   **High/Low Range:** $325 (Argus) / $175 (DA Davidson).\n    *   **Recent Activity:** 5 \"Buy\" reiterations vs. 2 \"Target Lowers\" post-FY25 results. [Source: Phase 2.3]\n\n### **4. TECHNICAL REGIME & INTRADAY VOLATILITY**\n*   **Market Regime:** **Mean-Reverting.** ADX at **22.44** indicates the absence of a strong trend; the asset is currently range-bound between $196 and $221. [Source: Investing.com]\n*   **Support/Resistance (Volume Profile):**\n    *   **S1 (Standard Deviation):** $201.15.\n    *   **S2 (30-Day Floor):** $196.00.\n    *   **R1 (Intraday Node):** $211.17.\n    *   **R3 (Mean Resistance):** $221.39 (Confluence of 20-day SMA). [Source: Phase 3.4]\n*   **Volatility Projection:** ATR of **$6.80** suggests an expected intraday range of **$203.31 – $216.91**. [Source: Barchart]\n\n### **5. TAIL RISK & CATALYST MODELING**\n*   **Historical Max Drawdown (MDD):** -51.9% (2022). Current drawdown from 52-week high: -18.2%.\n*   **Options Signal:** Bullish bias (Put/Call **0.64**). Significant **$831.9K premium** call sweep at the $200 strike (Exp: Mar 6) suggests a tactical floor. [Source: Cheddar Flow]\n*   **Upcoming Catalysts:**\n    *   **Alexa+ Subscription Launch:** Estimated $2B+ high-margin ARR potential.\n    *   **Supreme Court Tariff Ruling (Feb 20):** Overturning of cross-border tariffs acts as a specific tailwind for Q1 2026 international retail margins. [Source: MarketBeat]\n\n### **6. SUGGESTED ENTRY POINT PRICING**\n\n| Tier | Strategy | Entry Price | Distance | R:R Ratio | Condition Status |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **TIER 1** | **Aggressive** | **$204.50** | -2.67% | 2.5:1 | **NEAR** (RSI 39.3, <3% to S1) |\n| **TIER 2** | **Base Case** | **$196.00** | -6.71% | 4.2:1 | **NOT YET** (Requires macro drift) |\n| **TIER 3** | **Conviction**| **$188.50** | -10.28% | 6.1:1 | **NOT YET** (Requires RSI < 35) |\n\n*   **Tier 1 Basis:** Derived from the **$201.15 S1 support node** and 1-day standard deviation boundary.\n*   **Tier 2 Basis:** Represents a **15% margin of safety** from DCF fair value ($231) and alignment with the major 30-day volume floor ($196).\n*   **Tier 3 Basis:** Alignment of **P/E at ~25x** (historical floor), weekly RSI oversold (<35), and psychological support near the 2025 breakout level.\n\n### **7. SYSTEMATIC VERDICT**\n**FINAL RATING: ACCUMULATE**\n\n**Justification:** Amazon is currently a \"Quality-Value\" play masked by \"Growth\" headwinds. While the market has penalized the stock for its aggressive **$200B AI infrastructure spend**, our analysis shows that **ROIC (14.23%)** remains comfortably above **WACC (11.34%)**, confirming that the capital deployment is value-accretive, not dilutive. The current **29.3x P/E** represents an attractive entry for a business growing EPS at a **22.6% 5-year CAGR**. We favor an **Accumulate** rating, utilizing the **Tier 1 ($204.50)** level to build initial exposure, as technicals show the stock is mean-reverting from extreme oversold conditions (RSI recovered from 6.7 to 39.3 in 72 hours). The primary risk remains the FCF suppression through 2026, but the expansion in AWS margins (35%) and advertising (22% growth) provides a robust fundamental floor.",
+  "usage": {
+    "totalTokenCount": 23881
+  },
+  "groundingSources": [
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFlawRj1SVuyS2yTv1W58uV06iphusKED1oBrQpOA2iisScupSTGky86wwoVm4x6P1FzSGoMLJXzMdtmU4kK7ePc_R_0FHmrwu8IiA_h6CIYEY0L2wbprIRA5DolZz3GyYgwV9r_DHrEf-jQyaMYBTJsyAAIZnG40Suj6FCDEQ=",
+      "title": "financecharts.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEkZP4yY5hsQPB-SpYRX5Wd-9Yq2UgWJnCGYy9XEcGcwI4xRgd6Zef4phb4swH1AAllQyC_RuxntZwFEGFtFgORXQ1q4ZsZIFetfumlMBpcQANDwSqXC-RPk6cFDizRO6REQ_D7su_vmDt8On0QBxibSD8aMjXcMLP-wZlKRxjUmzy4sBmKbb5lcmb1sa_jGUA-CvcRxQGK",
+      "title": "calcbench.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKLAk1-3dqPEhce3jTcyCgg0dMgYHZdP68At46O063SJxr-yraAUJfJrgDaOYbvLFaYpaLPSBheA5KFOfzFGmxbfaB7EMinTlEEoFaw9c5ah_ykWRjVikmcNWoFdMyMGDy1PZ7190szLcXlh4MSieP1tsa-6qFUPik",
+      "title": "macrotrends.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGbtPxMvtGc6wwMiV_BTMDz_Oy6oj4LjJ8sY2k9cpqhirPJgIm9x6seFV4lxA5yv4-mJL0SqPJELhKFyiBtMN9KMXoQhUKnbYg4P0on__Fom_5pvgc9NXO4yfV6Ml6QClfpGqy8wQ8DPLusvTD0jNPiM8Jo0Lf4qMUn6qIRzFWq",
+      "title": "macrotrends.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEObiIJNjY8-L91aWlZYr2zmeJDvuItLBPgpy8ae388ixbr774BZx3HhepApsCxyZcN82QME01SGXV9yfvE5nY5Zv-NOcoA0KKSs-ci9HB8ukB4vjobiT0qz4ffVycpV23Oiroh3EADBRgvDZzBXviA5LNMsyiaHa6Vq9BS_c_yQvuOrQokedyZ1EWliKtYOlU=",
+      "title": "stock-analysis-on.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6cUK3Y8W7biiWqzfeTfSl4QB6F0IbbNvWf5HdnJg94mLYiAkuNVoInEfEwRJAy2ruScRwlNHl3Nzal8aWtmqxjSb_CNPoBLwQZJO6uuDmwVrRI9AexttJLyspA4Mi3UhLCXDeEV8dhLkHVv7bG5E=",
+      "title": "finbox.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHCerSe1tDxPReTC3dV2-uHGLyBD6gvNr219o9VOKVsoFTKK6I3hiLdUfTLvFdBUBtIMFpniiGrPJWPiDjxpuAH7NenQpNJkeLReepMziRSUEOJFfNttJ1QHIwkdj33kba4InQvpOqLayXu86S5aRSKITR48DRR6EgUu9Dyt-c=",
+      "title": "macrotrends.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-uDrJuofsGlJjuFNl6rl14tY9y2WZF81BZ21wHDUoEIP64PGmv1YHAWihVJuNKzhMl4U82UKtUdcCa3MUImOTwQvAKYj-wSB1AdAun6wbbdx6ity-L6QBK16E44_6ciDiaXznfAtqJMRwTObvC9yatGYuXV2wgmlvIHgP1Z9bOIU9w1CQsrKh6R_4kl6IO_Tg3l7GhiZH0DIKXGZw",
+      "title": "forbes.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbhnlh_0yAvq7Sh_bp66W0wUNHzVX5aVjieZ9xFWmqVrId9fpJ_MclvWOT77jfi4-G1iRJI0xKINkPK4nSKeNPbpCOgosJIbpQQz3RnP8H183qOslq_AkSpTThMYMg9WUItZ3YzPI9YnSExwqQF_PgES2iCJ0D6-sQd0hSSWqpKkbsFAToBAVWSTF0hXbaYSqqhSdZta3WDS1K6aaM_zlNHQ==",
+      "title": "fool.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEbzHUR01w4rB44tdTvpHh3IZgQNgZpVFfGah9ANOEIm4lnxuLSDs987t6V7_V0Hv8rJ9Lt5EGGsGfNQ4qfHo5CGpu6jIGhgS1GWDDKmWBq-OihDUSB-BH11Jr7sr6yDMQ1lCBjbGIANhqAYjlMdTutajq-M3Ly1L1Fn-TOJxptp3S9dQ==",
+      "title": "valuentum.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHztDBXERCNp0rGHlX-sNfLW-BTtXSj2oJ8nKLoqGNZvuuCHX6vvP5bU5YppWC93w7XyJ6-itc2falRlY3_GwqtZ9nXk7DpwIktxucp1QqLFBmqmUC6GWlAPHGTAJDCg3yvvX6XqKjQvLlOf1J0rg==",
+      "title": "public.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_Ori7p9XgzT_094u9eW8GwbZRZKus5b8qJS1C6wq4dqnJa2-MnJuPaBIYvxP9z8d1kE6kyA6h5HgHJR628VI4Srzd4aBpNDOPC_psogM5O68TyacrvhihwQJFsoSYgJJRy5ZQbsNLZs1u1wu-L3Q2SecubYWUN0ZynWf-blmAv8Tuce2ATyiXIhUomQ==",
+      "title": "seekingalpha.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGimtk011W1uV9RATWwvRfCJlVYoHdfQN12bPk_4T8I4qx2sz3mKc-Fpl66ktUu6OSoQU2tb0WRpfMNFre4IUnHJ7gjhRUjh_h4POqf4ALXngOQcivlJ6qfMOkcsEahMZzjzfcAOgS-eRvAbqicC1002rcY_W4fY89m7KE-uVQ0pbqU7-4p8hqT",
+      "title": "ig.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFzo71AjyxBUkAX0N9XLN4sT15l5fzLV5jZmFFsdNIVs1vdIKi-HVYJoM6KbsHdxoWZfNq88vucKPWLHf8ymvfYZ-jYvIyUZqmXwaOKkgRspFHZppQ4pDynNywi7xlsPLEdTndZe7eCqX4_w4mjglwUzdgjCQvKJcj26SkChncpGbrAfw==",
+      "title": "intellectia.ai"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHY_jTLU1NPXmNHsRIaoPrK1_dA7HVIuAqTjlIUWmzsFRo8-84YQQtc5sX7m3YDPIzbPg2Uf1UngIHIHkZJF3WBGqhVfZ0NekdD_WNdkOF2-T_tK7rbcJ2axONZqT7YKqs3h_VKtAYe91pPDPB-hlegfZBiDMhoY7irMA9p45n2fZN_yxc1h-lRhG3dFqKv6clhQLCImro7D-VWYGkhZgTdPsdvAxsG",
+      "title": "stocktitan.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3Wo3pH9PlggmvdVN7cbJhfm-ZIflTaclda5a_xLYaKW5333Fd1uQXTULFsg8f2-rKf0GSVbEZCgbbUxwT4I_8AzVaBMGXuu35Dr7QKi_EVSAIsAMGvbdlSHmXEgNZzWa_I-09YKTnLZX1dCJoHKhGfWM=",
+      "title": "insiderscreener.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFOqaTk6pHDbtwMgXfn-V7h68lvfNKGz-xCCgtP07XAFsG1nuRF8gmr4Ur3vP6gYWRYooRkJbMdo8j29TrLVXAn2ie6KxeXPVmeoOrUgS9xFDG-u-nCEwo-1FolEh31clJNl4rBs4XV1QMIcpVvfNkPnn8-DoJboqHYNCfoUNFD-dQNzBQfaaOzRc1jlEky3WbFZsS55P29OHy9Id1nZLY=",
+      "title": "sec.gov"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH99QOAR2AKyS3wtLul1z7O8jYgqzprK49nNqyZrQK7uzxgYR3djpUOLgNemg3PLuYVCGJj7OFOinwEWevFMLtM6sd375QOxJBv0yK9_HBhsVpw4p_tfDGYGM-eZF7xm9jisNskL-JQwa7h5Qxy_iJ2t6tISEbTOf-RdWC5TVRK37vfvTh1qMPpO0N1ubhga_PnsdngfyFziujHYy8kgFtC24SaPzb7vAzAh9eWdBEPlXG6lmE4TtPqPn1UYytDIbUXn0e1NMoy",
+      "title": "marketbeat.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFKvby64Ia9dg3XRYVjl63-f9AWlOMej2_y4kcgQoBfj93xkQcq4QrpLmhmdDrfnIhADxlrnYbOx4TPSV_UvR5uE071xa9wqF9113ot--ZUH8sXb0BMqoDVkRzarQ==",
+      "title": "catacal.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFiinITu6A2dt-CLcdzA1PXxKTSfTBEIFmpj3d_bU5f1tkjvIJFxgfTnx-w17v3_v9VpXWH0iS-SlyBjx4kkcxwLCfFDGq8gxKhWz5qVSMDv6cRN2qwZyCHsAkkOe0J45X6uaaCQVrumy6v0HiBlsAQX-5I2QjMPAJaOh2C7duQ4_gncnokrVRy3SX0xNP39_jXRKKS",
+      "title": "fool.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFePTAeT2t9nggMh_ALeehvgKExrFqZbjqIOb5iecDYZa__cJoF4XUywu-BfAjmXiwZ4pFBnXdDYDkoO3NYPiJK3ydvNAwqyRYmUK_8WxxFxO5pK6vAxIopxfzFHU2R-flffMeSSXT44ik_77bFlKjzsjO2T5GMATbL0RRe4rgTj9txQ4HVM1DF4XHhqmHhxHpHmCM-nz3NSA==",
+      "title": "finviz.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2IgvcQ6rWrxEgaKS8dHB5tQnKRXas51xX7JnyYiDCO0OTRCsNM1shGiujSuZbWeuwHlyq0CD0Bb2kYCNYDzSE4VV4kTO8kyLmRFtbg9pXUm79VrvnomV1Q3BKRzW_RmhhjpiA4F3L_xQmDRyc6zLwZNsrJHWh_SlhEuSD-agolW6eQvSDneFGl22NKCz0Gom2KA==",
+      "title": "finviz.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHNhWRQcC4OzJ6H5yN-3ie9idFqc151WkcMh1ndQgkBUVr7tyDbrbEhBHwTsQTMGcXBf6DrGBKYlId0zl63yudV2GVI5CyDS4GiwvCC_11-qcu0K4eD5N8PxhDAIVxfSkTA61q8YMecNvL9KVHTIMTpsw==",
+      "title": "marketbeat.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHth8zxxDUOja4swICxD-sTFzozJ4vdK-4Whd3KTzz3p32fURm3u16GRVhtAQSqbp6uxNbCzsZccQ7TICpmC74PlhSaVIcUKMZemAR4pDUXhgFoOvD5Jmob9A==",
+      "title": "fintel.io"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuWcZ_sL09rh5xGNRInDL8FZte1ASoNiVshrljPICXfYm5HXhwu0dsZo48I9paG5e-YOr8jkC5DRd8ZYF5L4XnDZHEnU_ZargClzgUABJj5nV5e9aB591B_37o5eb7mCDqiLOt6z3rpLisbWnmhbnWBly2chUTAO-W",
+      "title": "barchart.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEdjs3yqWzKJFi12UR2-zvSxV_1qzFCZ1Oiixz1_4bBDYF0NmLByHABJ0RThlDBt9aLWKc-YPkcwDfm6jfz-01oSETi30OGp7gcnbqba-KSZVv8IOPfDJiWcvjdI92LCjRMXkTD_sW7L5fGXhuaw1NoYveaofw=",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHG9pPEP07BrLElPFxsbh__p4wAVAxlZbIhtTDoqdeLhKT6-C0041jUZz8O5CGEHQwWsngw3IZHYy9t327QmvAPyWKqaN3LKKf9wqNOEwStubZ-eylYMCtcCjPQFFM44lBCyJKS3hWQIkyu98jbbahr6h5vhL4s",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJ67j6UFxpVbAxS0SKCVhh1VsPwTK_crbMbeyEyaUd3-AgtQAM4rd4ASdQ2DiZBt_o6RBZ1OgwDDIJrqpHxSZxJFIicmBcGRlD4vry4vGN9CYWKdOiY1-IzJYUOmea-TxTucti-tXyaZk-DK6yomfS25TYeqXoWec=",
+      "title": "barchart.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEmp95BPldh57cyu26OMkS-QtAyvZx12ReFQ5hI99aqfHqEvHSWKUc1_sNm1iBE13BEobUVdjPRial0ax-L6pL8lngd_XdLDlIdxKAnKbrVSiCuA6qz-PenWI9OcsufEfEI_kML6DatSfANeF6y",
+      "title": "optioncharts.io"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGkTFeBEDblwo20DuSnMpfZcCa4Sn3JUZKeuMIydjDpz2b6R9Wqded_R_kfNm6gulwMhXD9yeQ49HMKm42FIl9FOwB-MY6vwUh7rWj73yZCgICt_likrM=",
+      "title": "fintel.io"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuF8TAJXH11-ZHBz840Iqe85JlonkccbM92f7R1SF1A7rMyJxHoM3P7xk7V0dS3-QRPl_ycwjKJFEodLwloz5skR4NyzB3bAg5r9JwKgwAM7NltxpomnFimHqkIEs4Es5hUe56Mgw=",
+      "title": "abg-analytics.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHp9MfMFCbNodV-zlwjLxlsonCCH-DvdItyZzRzF7S4_pBl42V7_Oa-InZ8vgx1PLR9Tug8krQYUJPoqxqj1ZKbGsjgdwIdZGWB2yAWRap2EHa1iQ7cemI_IyDhXmJ6KnWvYwSDL-ENZKXp8Rk-eEF2G6CHIkNbq9TMTxo=",
+      "title": "financhill.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFlHbmmjYiKi6aG15eUjA0tAFcRUI7LcC18ANMatRj7HZNiHsfB35BJfMgFfo8HmQwUDOA7pJpvSBzwgHRNx5bBCLZUmdsi0JF3w-6fKpIm-n8wEU4J7MzklJKjWvKbzrJGkeIQgNaNaNezJG5GOFx10Coif6_roXtnTNU=",
+      "title": "financhill.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5wC1PV81u2E9NEwXpUA8JQcErpGBGTnTfq44bDa_rqqE0eAKjygTo0i0MYrCPXGLBzLGkWhXHUlIJmVMTV-uAWuIfUpzhZslrAeMAw0-Rsv82yZHNhLRLQWoxH-qW1G_-ljofBUdPoQxVK7lkpYjTllUxj4xh",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEmHcAvgZcl97gmQTudkrqJCGo9xVyuNtu2Z9s895jcC0zxEM6rjT154mP_IXMbhkj5DIsAABKU5hQhcn-Xp9q0THAKngE_GI0JywhkR4yu8BNyRoev7XfyLeKD4K1DQjXr_MLgNG1jc9ocXn0wXj_uUiS6Ojb66tNUni3l9bDj",
+      "title": "nasdaq.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFTG_LnH4rXhCS0XT5UzSe5cG5e4v7QXtEH8LPIathQoptuahBnNAn40kwUHSD2p7XQqtfhZkR3ZgOaX9qzOk6fnmIy0JJJyc_kwrnVnkSdj71Q49g2-cfBIbuFA7vGHboRuhmmsqvDZsUThQInYLPkGrVGeWpcGJR0EF_Cc7eIUufrYtMX",
+      "title": "historicaloptiondata.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFv4itDH8wbA6pnVnbjz46v40siemvdLf2dMH7SSJuRxnhTHlSHaXsc5bpTtbYjJL89jbh5--7MjSxYoeg09WkYRgviwVoPnKlP7_kBoWeKMO4se8jjgGBKWdcPiMShDiAJpWdrVHjVbijRvvYYyw==",
+      "title": "altindex.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQERbgEytOGmaFyuSk2wYQzL3yO1AEpNTJy1h4DBKAsKsvGgfhOXpROipQsU5IYTRXZci0DSYJvdYzK5q9c19lEuwP6goaBrsw07wKcKefOFIE488JI2on3ZMmjdA88LXVgQj5wRmaJTiZUawtsebG6FEsR0OofM_UQpsbYAgsC0PRZSu_bo",
+      "title": "historicaloptiondata.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIU_tz2I7ebMP7FuPgsxiH_09g3Z4ukUbuONAgeGJZ5VI-LK5x74Ic6Q8rcz94OIgUQXeGgJUdXPvRLJC9tk1HoFocQzOrVVcXmy69HEm75jXU7BsNmcZ0Nqa9EQku5A==",
+      "title": "optioncharts.io"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3y9LRfh0zhd4hmEWjLbPxsaIUady9ZqcdSuQWvufesynI-UCq9lbU6e-NB-ikvl_FUwfnxjxtmB6Dr1v1W6RtCTbQAxOy2j7ldNGDclnjm9AwR-K2XOM=",
+      "title": "fintel.io"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHNPijK_T5T6LglMc0vJQajlYWJQ1tDqkIoT2j5KyRCb3OwUmaEFBSxI1Wn1nge_wO2JiPueqXRcZhXRm4Q0hMsVGHbzNQ6k6HYMUluF2Sd_BFf5VD2JbnPxineypVRpTWrXWWQGNbP85Sv_WT5tXwzTKcjyFjVjz6qw3l4HxInrPvSKg==",
+      "title": "nasdaq.com"
+    }
+  ],
+  "searchQueries": [
+    "",
+    "AMZN ROIC vs WACC calculation 2025 2026",
+    "AMZN latest 10-K 10-Q revenue net income EPS free cash flow 2026 2025",
+    "AMZN debt-to-equity ratio interest coverage ratio 2025 2026",
+    "AMZN SEC filings 10-K 10-Q 2025 2026",
+    "AMZN 5-year trend revenue net income EPS free cash flow macrotrends stockanalysis",
+    "AMZN vs competitors valuation multiples P/E EV/EBITDA P/FCF 2026",
+    "AMZN P/E EV/EBITDA P/FCF historical 5-year percentiles 2026",
+    "AMZN EV/EBITDA historical 5-year percentile stockanalysis macrotrends",
+    "AMZN P/FCF historical 5-year percentile stockanalysis macrotrends",
+    "AMZN 5-year free cash flow trend 2021-2025 OCF Capex macrotrends stockanalysis",
+    "AMZN adjusted EPS vs GAAP EPS 2025 2024 2023 2022 2021 10-K",
+    "WMT vs AMZN vs MSFT valuation ratios P/E EV/EBITDA P/FCF 2026 February",
+    "AMZN P/FCF 5-year historical percentile Feb 2026",
+    "WMT valuation ratios P/E EV/EBITDA P/FCF February 2026",
+    "AMZN 5-year trend FCF 2021 2022 2023 2024 2025 stockanalysis macrotrends",
+    "AMZN adjusted EPS vs GAAP EPS 2025 10-K reconciliation",
+    "Amazon AMZN upcoming catalysts earnings date product launches regulatory decisions 2026",
+    "Amazon AMZN Q4 2025 earnings call transcript management quotes guidance margins risk factors",
+    "Amazon AMZN analyst ratings price targets last 60 days Feb 2026",
+    "Amazon AMZN insider trading SEC Form 4 filings Jan-Feb 2026",
+    "AMZN Amazon news Reuters Bloomberg WSJ Financial Times SeekingAlpha Benzinga Jan-Feb 2026",
+    "Amazon AMZN sentiment keywords headwinds margin expansion guidance cut beat miss news 2026",
+    "AMZN short interest percent of float days to cover Feb 2026",
+    "AMZN stock price 50-day 200-day moving average Feb 2026",
+    "AMZN ADX RSI Bollinger Band ATR Feb 2026",
+    "AMZN volume profile support resistance levels 2026",
+    "AMZN IV rank IV percentile Feb 22 2026",
+    "AMZN unusual options activity call put sweeps Feb 2026 Unusual Whales Market Chameleon",
+    "AMZN 13F filings top institutional holders Feb 2026 WhaleWisdom",
+    "AMZN 13F filings top holders position changes Q4 2025 Q1 2026 WhaleWisdom",
+    "AMZN unusual options activity call sweeps puts sweeps Feb 16-22 2026",
+    "AMZN Z-score 50-day 200-day moving average Feb 2026",
+    "AMZN volume profile high volume nodes Feb 2026",
+    "AMZN price Z-score 50-day moving average Feb 2026",
+    "AMZN price Z-score 200-day moving average Feb 2026",
+    "AMZN standard deviation of price 50-day 200-day Feb 2026"
+  ]
+}

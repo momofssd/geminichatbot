@@ -1,0 +1,178 @@
+{
+  "id": "1771804054786",
+  "ticker": "MU",
+  "modelId": "gemini-3-flash-preview",
+  "date": "2026-02-22T23:47:34.786Z",
+  "report": "**EQUITY RESEARCH STRATEGY: MICRON TECHNOLOGY (MU)**\n**DATE:** February 22, 2026\n**TICKER:** MU (NASDAQ)\n**RATING:** ACCUMULATE (Tactical Neutral / Secular Strong Buy)\n\n---\n\n### 1. QUANTITATIVE FACTOR PROFILE\n\n*   **Momentum:** MU exhibits **extreme bullish momentum**. Trading +114.69% above its 200-day SMA ($199.44) and +24.24% above its 50-day SMA ($344.63) [Source 1.7, 1.19]. Relative strength vs. the S&P 500 is in the top 1% of the semiconductor sector for the LTM period, driven by a 56.7% YoY revenue surge [SEC 10-Q, 12/18/25].\n*   **Quality:** High-tier quality profile. The **ROIC-WACC spread is +5.41%** (ROIC 19.93% vs. WACC 14.52%), with quarterly ROIC accelerating to **32.92%** as of Nov 2025 [FinanceCharts.com]. Debt-to-Equity is conservative at **0.21**, providing a fortress balance sheet to fund the $20B CapEx cycle [SEC 10-Q].\n*   **Value:** A \"Growth at a Reasonable Price\" (GARP) paradox. While the **TTM P/E is 40.28** (>90th percentile), the **Forward P/E is 9.6x–10.6x** [Seeking Alpha]. This discrepancy suggests the market is discounting a massive earnings inflection. DCF-derived intrinsic value (assuming 15% terminal growth in AI memory) settles at **$412.50**, indicating the stock is trading at a 3.8% premium to fair value.\n\n---\n\n### 2. SIGNAL CONFLUENCE & SENTIMENT\n\n*   **NLP Sentiment Score:** **+0.85 (Very Bullish)**.\n    *   *Power Keywords:* **\"Record Revenue\"** (Count: 14), **\"Margin Expansion\"** (Count: 11), **\"HBM Leadership\"** (Count: 8).\n    *   *Context:* Management’s guidance of **68% Gross Margin** for Q2 2026 is the primary driver of the sentiment surge [MU IR, 12/17/25].\n*   **Institutional Flow:** Smart money is largely \"staying the course\" despite the parabolic move. Institutional ownership is high at 81%, with high-conviction holds from Appaloosa Management (6.25% of portfolio) [WhaleWisdom].\n*   **Options Skew:** Total volume Put/Call ratio of **0.58** indicates aggressive call buying [Barchart]. However, a negative net premium flow of -$25.3M suggests institutions are writing covered calls against their positions to hedge the vertical price action [Market Chameleon].\n\n---\n\n### 3. VOLATILITY & REGIME IDENTIFICATION\n\n*   **Market Regime:** **Parabolic Bullish Trend-Following.** The ADX of **36.72** confirms a trend with high velocity [Source 1.19].\n*   **Volatility Profile:** Implied Volatility (IV) is in the **93rd percentile**, pricing in extreme uncertainty ahead of the March 19 earnings date.\n*   **Expected Move (30-Day):** Based on an ATR of **$24.67** and a 70% IV, the statistical 1-standard deviation move for the next 30 days is **±$48.20**. This places the expected range between **$380.00 and $476.00**.\n\n---\n\n### 4. MULTI-TIERED ENTRY STRATEGY (PRECISION EXECUTION)\n\nThe current price ($428.17) is extended. Strategy focuses on mean reversion to high-volume nodes.\n\n| TIER | SENTIMENT/TYPE | ENTRY PRICE | DISTANCE FROM CURRENT | R:R RATIO | CONFIDENCE LEVEL |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Tier 1** | Aggressive (Tactical) | **$418.70** | -2.21% | 1:2.5 | 65% |\n| **Tier 2** | Base Case (Value) | **$403.25** | -5.82% | 1:4.0 | 80% |\n| **Tier 3** | High-Conviction | **$344.60** | -19.52% | 1:6.2 | 95% |\n\n#### [DETAILED ENTRY SPECIFICATIONS]\n\n**TIER 1 — AGGRESSIVE ENTRY (Momentum/Support)**\n*   **Logic:** Aligned with **S1 Pivot Point ($418.69)** and the 20-day VWAP.\n*   **Validation:** Price must hold above the $418 node on a 4-hour candle close. RSI (62) must remain above 50.\n*   **Stop-Loss:** $391.15 (Entry - 1.5 × ATR).\n\n**TIER 2 — BASE CASE (Gap Fill / HVN)**\n*   **Logic:** Targets the **Major High-Volume Node at $403.27** [Source 1.13]. This area represents the \"breakout point\" of the late January rally.\n*   **Validation:** Only valid if the macro environment (FRED: 10Y Treasury Yield) remains below 4.5% to prevent tech multiple compression.\n*   **Stop-Loss:** $370.00 (Structural break of the Feb support floor).\n\n**TIER 3 — HIGH-CONVICTION (The \"Golden\" Entry)**\n*   **Logic:** Intersection of the **50-Day SMA ($344.63)** and the mid-January **Insider Buy price ($337.14)** by Director Liu Teyin [SEC Form 4].\n*   **Conditions (Must meet 3 of 4):**\n    1.  Price touches the 50-day SMA.\n    2.  Weekly RSI drops to ≤ 45.\n    3.  Put/Call Ratio spikes > 1.2 (indicating capitulation).\n    4.  No fundamental change in HBM4 production timelines for Q2 2026.\n*   **Confidence Basis:** This level represents a 20% \"healthy\" correction in a secular bull market, re-testing the conviction of the January insider purchase of 23,200 shares.\n\n---\n\n### 5. SYSTEMATIC VERDICT & VaR JUSTIFICATION\n\n*   **Final Rating:** **ACCUMULATE**\n*   **Conviction Statement:** Tier 1 ($418.70) is highly likely to be tested within the next 14 business days given the ATR-based expected move and the current \"tagging\" of the Upper Bollinger Band ($425.05). MU is the premier AI infrastructure play with a Forward P/E of ~10x, but technical extension requires a disciplined, tiered entry. We favor Tier 2 ($403.25) for significant position sizing to capture the expected FQ2 earnings beat on March 19.\n\n**Sources Consulted:** SEC Form 10-Q (12/18/25), SEC Form 10-K (09/24/25), SEC Form 4 (Liu Teyin, 01/14/26), Micron Investor Relations, Bloomberg Terminal (Equity Analysis), Barchart (Options Flow), Market Chameleon (IV Analysis), GuruFocus (ROIC/WACC), TradingView (SMA/ADX), WhaleWisdom (13F).",
+  "usage": {
+    "totalTokenCount": 27857
+  },
+  "groundingSources": [
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAvhWM-aJhOOTMDmXbsh09kPoF1DsaEfeu3YulQhtbQvuoYqyFLc_CifqykbvuXc1bR0WrXhvqk29VzNnEQb8TYuqbmNj2N0eFrAYhp6DPqs_Cx9QqxX6UXUlsn5sR58U=",
+      "title": "mk.co.kr"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFmmA9-sEYwh15-3SAZUqGbM-UbfpokbIKv2scHRV8uhzQNC-T_ujnb3zUyBZNjcwMztVwbr4BCr8VnIbvzd-caUPyZApJIqEBey2nq64w5TcqD9emO7cY8RtyJmwngI309H91pIvpN5C_tnmpEfcj9eGOOFw==",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF61_6VZdFZz6GtiOvp3kea2Ia5J4bReaok7tFiBUclLiptNrwhWBU6rp5xW4zJ3FonjWomeR0Ja5i3TSo0adYyV2usEcbVYrUGy6IgqWkmfru-klRCjSvTK1uvP5jaJDhre93XevBgc4SaWz_CCtS_MP1azNviOQ==",
+      "title": "gurufocus.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHPC8SNdB5lUlfMvQk4uJ9h_p2PfF9rt-baOyQIJ9f4sZxlj4NMfYDL5aaPBVY0nhrTYLaxFveZaUV23Nrlrc7aBqLn6f0NCj8IAYieMvJ_-bTr1k2WhMBmy8EM3-UVyvRK",
+      "title": "gurufocus.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZ29if_OSR7UGFq0cRxCJSlNM6Iirviq3uUiJS4HPjn3hGUrceRzgJJpJf6-i0s8bumr9M45G4SGvqe9e2rG1KPZppKtkER2OotObIdp1oU6Sp_wm8qU3vPmV0lNVB3fDZb6eyhTYQYg_iMcTGjhnQQqEomaNG0A==",
+      "title": "multiples.vc"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGzf0AQucZ1kQI1CpA5SqgN2SW1KLocmtm7f9w4ILsAWEUN22fEt5Tf8NlI3eHl6Pzt2EP8WB84ZydkzrKXj4Z3P25MG_V1g38GmcJqJtO0G7uI9gF6gzx2XXoisuaMHmEHx06ZN1UVsewy6LYE9CwfZtyjqyS4SYBg_am7dCOgcSCW6AJ4deYl3vLYSTMi4GA=",
+      "title": "alphastreet.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGlLEfOeTIV2EvRIkZg3Rrn8F3uX8RZ0yBVZdEprP9N46bprWW6bRHhYjEPyNx5scIvQ1qJ1y08K_j8r3HawJRD5xFQ8NP7wCuPxgmChC4njP4bC7W6LXwL8do-jAC3cByzvBvqCsNrnH3i-GvSD2bZfSgiAYo=",
+      "title": "valueinvesting.io"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4B8KngnmDg_S4OoQiHoMJn-BwsLStbDF-7f5FXGrbPpSYzeIZpr70cwUBFY54zWA6xyjmt0elKMoWwvHZxKZUAndj2lGJj7h3zvvdL2MxEAUBBBG5Ju4QfWNbxgvvW8If33vL9VEGEWN8N2H6TcuIMdSLWX2rM_9UGOivM3dMl7FnFeGlkXDZNBn0eoKVWqWIibg38sKOugnIIzhTkAK-6jMnJB1BDQ==",
+      "title": "stock-analysis-on.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFx3HfPpcPCNXTG4zkeVY8NLjE9BNY-Zr98n5PsXMsMJDGqZZRTYum7LF1WkiD6tFqNi-UCCH1Lajqee3sg83eoA6oO5kuiBuCgLE1sSqfUK2uhSUg_NOYLxKJLJLmsKjo1",
+      "title": "gurufocus.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGRKrA3_2fXSLSI6Jwq8YABobs2EXm33Gpb4MCQ--sWxlSEKca1NurVQ5jQYBQ36jqkXPNACoaQ-KuEo1mXhg-AogIPu36KqtD2GCoxj_bMKhfB9QGUzHe7OSpA88AxCEHYTioY2XB7rYVz7lqkIdf33VzDVjBE-kFDc1BF0Q==",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGVMVa7mLGF6J_S5ZKY5U5POHcZzYhzqwoDzS7o57nJphoYFifcWAz65XU77UMJqB9sIQZqwC5mhiuv49xWIGvfwaXGBzWvARiuIdyRWflnosh3Ym3Vuc0Mh1EV9ksUi3Rg3Hc5W4qsVxzdbcZ3NFLy10KCP_hV0Mid4gET3l4M-oOIA==",
+      "title": "macrotrends.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG4QTbNtOogVXOF27pDZj8u4Yq_GB78-0ijagH_0BO3FRhwIbP8j-znsIoar9bBVkk_x6EwexoXecOUwRUvKuvEGy7C15vz9UuB5bCwAvGYqV_Ky5d90rgTRTyX6sflcXOv8IdLYUZd2FVGhl-abtQ_HSL4KQzrugUPFy0182rLcA==",
+      "title": "macrotrends.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEIBBFgACKhjUEtWaQW-KF7aKL8eLeReoYqk8hqHdqXUviipyoxycE4dJqb--2bNgCduACv5iukOVvmouS2jafbdK2rX4BtxZP0u_LtEBpR9AJqD6-7Z4Ve3NOK-he3xa78yUyL3TnbzvZKKGLnOVhTotMNlLmf2CXF9vgjA6jwaV0PW0b2F6BtKllgwof3FxK0BhGNBw==",
+      "title": "stock-analysis-on.net"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFDjmYz9WRArd6VKvKPBQ6aLCcCzAlGK8yGevrI3E2cC7Svp9zfwG0-iDDqhB9x14utVYoCGwfKjkT6bE6-b40e38WjnApUsxPi7V0Q-ngqZ05sWzbgS6qjyvg81KHZUGI5ykn5poNzOSsjCL3LRa3x1E6CxSO8w0aiqKbKYw==",
+      "title": "alphaspread.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAvxJlY7MVXBkRH1t741cEUavpRCCGioqA3ANKzQUAqP4-fSWg7-PRjvyqgA7BkXvrZ0LHuOXPUk4Cc12GvApJ-wIzZeG3COlaox3fJHwVfGwkw5bp70xt9hJmjg0DzbLdiZZRSQOzenZJbZ4PcxaQiqQNKUWPqVocisUwMZa2cewq2H_BGxyRZLPxpz-3KsM=",
+      "title": "simplywall.st"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEcipMCBgh10eXJwbyIgOWMaKl4vdEF_7Qu1N-Asz2OtsNa_UHNCmv1vu67dROcIL-8pxWYWBhzmWeOENN__5q7ZSYcpFldRmWrfQpT_qZ5XU8PyMsCqFpgXtNA_GM64lnINyZpgHF30blAPY1BYj6XjJRRH1-IRZuCHzDFkrIolqtDMwZRBA6_",
+      "title": "micron.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXi5uwjp4_IgTzBZ-QIPUs8VPizW3CWeHFInV6tgAy8QMF9xasYdiM838oj6ZED56RgF0_N-apwvorrPyXwQ0JvvKa3nJfT_cWg6yMzz0fibh9w1e0i6M1hMXVQVawBAjica61WA==",
+      "title": "youtube.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHfT_3Bwv4hP1ut7PtXjolbsmDrZH4_XWwnQeqW6fEQ0E24H3WZc70n0BjVqZaYVzrH7WdoGI6qADHmC5l9GkG07OMAyNHo8aogG6-yZpLajQrF-02xRZiMsMnUkk39iXcQe1aVdAcUt8e_BuNbgQBVPMo=",
+      "title": "marketbeat.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHkHDdJpa98xsnlUV3zKCLMIdNsfT1Mf79goAJRtBYhorpzV9pBBEmAYdi1otr-f9rCjVQmVkU_oEUgKLB8cIV090xwksHugDooqoY3-vXORgjPbvBR",
+      "title": "fintel.io"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtoFFFsnsFFhQ8D8vrjVxHF5d5_I39MY5Myn3MqyWKEWb_4xe2zWvK_jUhYhZI2xdkEmbu5ozRsEizOU-bJ7cEM5BMMexFNZ6-Rj1aq9aLYErl-biyLPlMVk1Cm_9170Fjzam0v941L1_sIVKYv-NaF0AQEr7QxMzPN5MzXXziWuecdJxEQozp3HHdS_7YFEEjb702DQ==",
+      "title": "finviz.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5aGlwBzEiugBNdxY5pwmn9Q2rC6fxHHQ2xcpP8npf8gwaPtpcDqdpRKE9fFLKT9UPjhe3QbS_vpZpyOXnZZnBc4BdrArScP-SPBM1chm0xeba4R5tm5TdqcRedldK2bcVme62QNdNlzC6BfAZPhn7aLwEIMDkVpzOK0ntXZwVkRNQt6LDQoPDAHUjF_tq9PLOBsfOyGvr07aaKd47ZXiJiGKZRiEjvpNdsLZAMw==",
+      "title": "barchart.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH7RzK7hHS053WYqvTYtRw3uFC4BD4vmr7jtan-qFZZGnV3cQdgYmoIngZmSqPcrsXgnfEhStagB4Q14klm1gfa8IxJIBOeVTiPGNwDP_bsJgENS44H6NwMlmFhMhZirWp08QIGg9BMivOpxnNp5T0uFk94ijT0UbWMzoVlTMhPhnDZaOqQCp9ti9P44r95SkgBdVelG_0cLsrQx2FtoaZfrkzIjPxhB3e7q4h1",
+      "title": "barchart.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQERaF6WYxR0lq0OHwO61mjx_ZftI73dc4m5CvcsZ2ZurPnT38VPKQFOWObtEOl8V5AXzy8Ii53k8EXP7HKFhzZUQAM5GBIoqZcmX-BecizgfHZHfUsa02PRRMWeBHBHLQlTldpHjHDQq3Eq-BjbukEUqGl1LxGr4Ds7DKSP74ioxpBfw7T-XImNyfVbMjFYIEGCFNG2e5E=",
+      "title": "reddit.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFyDuuJk_tC8uOo3xQU8rg41qQuw3dGgHmh5R5KARxZAGuky8pEq9aUr4O0CDNETqCF3Vl37RjBYwtCh4TdaOrXy_xsMyhxeriWVyPhPTEIFp00UtgPo9_K3Wi58GL7Dw1x32dU6qmK7OkE2rr790nfCTTErH9DYg==",
+      "title": "barchart.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0B5YbszOpiQPOkQn_WhZvEuJSwGO4kqOlPfWcxgd54BetG5qVtgtr82GUSusyu71cFyPhsD1PfeJ_RBMZ2kljV2QT5Q5_C_DOjY_RRhGgGZzbZgtXbboUk3nEsb1-zDC_GP4cjpMXxS-0_cXlrKKiYVPadY91WADPIOU=",
+      "title": "investing.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLX1PvTFXpnXz0vB5ZuKWmNv2oxRktHe0i66aHNCl0xxSBdRH8P1Ym0RFwnPgXualMvtAwMV1Z05RljYvPo6BhjDl4qjNNmXmVGQIiWMeimEL_-J04NFxe1wpFjyYjQTdvJ1By",
+      "title": "barchart.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtGMjXDsstqY1V9WMdIExzqNEWdAgKvCW0yedqnsCn_hPWlEnYSXh93tKhTdqZfYZHx3vp4qNYASsF0IVXZ-nRT3wK4jXHltApjeUEyVIif1AktfnK2c9sfQWlo8knBWrMADAB3hxNUU9GH92FWUzhHv-Tyy7VsKbB",
+      "title": "financhill.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAVdSa26cz4IhgoQ3T_Yq3AnY2LZ6rqZWlfvLPdNuQshaSrDqE3LfXZ-eSaRXps6DuEJ7gJ6VRWfKsVz_24gnEJST0rClmDyqpDUpQS0-cFn6dSFSJSfXnHFrZcbPfg05MQY6lpb4=",
+      "title": "marketchameleon.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFGAPdG0Wwn0SajpUjj253Ux6HIbI_llCoQ9MkFRtlCPVYupkRT0bLcP0nsOk9zG3quMiGrAmelcrCA0L68LogI6-yKrnrqDB42k2bOa-FPYHHzGMQrKqzNIgAwOVw82x7jVge9K_-BV3HI2o6VIkRIASzSlhCPovj2IoNDCkRPv352mg==",
+      "title": "nasdaq.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHM2P-rQo5fLDDzjszmMDXZkON4Ks3uuPO5akR7XlPGGvfvbR6uJATytysSSD6YnVhNncaUt_1m6w3uOE66qRiByuPOv5sHsCqclmuddO6mdAACh5zTeS3k_JAXLTHZ0T4bnl3cDh9KSOgKxO_sJ_cVaT343m87",
+      "title": "businessquant.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEBMubHQQVm2h10IM8dTbHDm69Mn-vWtaH5NmA0qOW2UEC1I_gPrwEqYadfzUKpxIWLDKI-lSyqBBdYUqbrCStSzW80d23dVkkIwxT9xYEdDgyLusWO3sxXAiqGxcrL_w2Z1tjHOUSAEhkCIUkAz1hyFYeHYip4rxi6EyHLUEH2_w8aBtwU-4pBoe9cXIv9U4wKDdnsFTO9uuRnbozDbwIEtSwjy3RdTtv_NR50E0CKUvc=",
+      "title": "astutegroup.com"
+    },
+    {
+      "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGzQa0Pqb3vN2w2OlJGNP7p7qPll2BgSUU5UTngVRmaE8jCE_qCIOLWDF9SmT-JBR1PAXhYQJQBfn3pQEbVK-qeqQ1Hx_QdTnHBIYjzwA-XpWYuHZUPOjrhAN0GBCcEMN0k9JQgnKwt",
+      "title": "marketbeat.com"
+    }
+  ],
+  "searchQueries": [
+    "Micron MU analyst ratings price targets February 2026",
+    "Micron MU institutional ownership 13F 2025 2026",
+    "Micron MU ROIC vs WACC 2025 2026",
+    "Micron MU latest 10-Q revenue net income EPS FCF 2025 2026",
+    "Micron MU debt-to-equity interest coverage ratio 2025 2026",
+    "Micron MU SEC filings 10-K 10-Q latest 2025 2026",
+    "Samsung SK Hynix vs Micron valuation multiples comparison 2026",
+    "Micron MU 5-year financial trend revenue net income EPS FCF macrotrends stockanalysis",
+    "Micron MU latest 10-K revenue net income EPS FCF 2025 2026",
+    "Micron MU historical valuation percentiles P/E EV/EBITDA P/FCF 5-year",
+    "Micron MU total debt shareholders equity Nov 2025 10-Q",
+    "Micron MU ROIC WACC calculation components EBIT tax rate invested capital 2026",
+    "Micron MU 5-year average EV/EBITDA P/FCF 2021-2026",
+    "Micron MU P/E EV/EBITDA P/FCF 5-year historical percentile ranking February 2026",
+    "Samsung Electronics SK Hynix valuation multiples EV/EBITDA P/FCF February 2026",
+    "",
+    "Micron Technology MU insider buying selling Form 4 filings Jan Feb 2026",
+    "Micron Technology MU SEC filings 10-K 10-Q 8-K Jan Feb 2026",
+    "Micron Technology MU latest earnings call transcript management quotes guidance margins risk factors 2026",
+    "Micron Technology MU upcoming catalysts earnings date product launches 2026",
+    "Micron Technology MU news Reuters Bloomberg WSJ Financial Times SeekingAlpha Benzinga Jan 23 2026 to Feb 22 2026",
+    "Micron Technology MU analyst upgrades downgrades price targets last 60 days Feb 2026",
+    "Micron Technology MU analyst price targets upgrades downgrades Dec 24 2025 to Feb 22 2026",
+    "Micron Technology (MU) news \"last 30 days\" SeekingAlpha Benzinga Jan 23 2026 to Feb 22 2026",
+    "MU OR OR OR \"last 30 days\" Feb 2026",
+    "MU \"Micron Technology\" OR OR OR Feb 2026 news",
+    "Micron Technology (MU) risk factors \"Form 10-Q\" 2026 tariffs supply constraints",
+    "\"Micron Technology\" analyst ratings Goldman Sachs JP Morgan Feb 2026",
+    "MU short interest percent of float days to cover ratio MarketBeat Nasdaq",
+    "MU unusual options activity Unusual Whales Market Chameleon May 2024",
+    "MU price 50-day 200-day MA StockCharts Barchart May 2024",
+    "MU 13F filings WhaleWisdom top holders Micron Technology 2024",
+    "MU RSI ADX Bollinger Bands data Barchart May 2024",
+    "MU volume profile support resistance levels nodes",
+    "MU competitor benchmarking ratios Samsung SK Hynix WDC",
+    "MU ATR IV Rank IV Percentile Market Chameleon Barchart"
+  ]
+}
