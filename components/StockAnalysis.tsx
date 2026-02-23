@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import {
   analyzeStock,
   deleteStockHistory,
@@ -214,7 +215,7 @@ export const StockAnalysis: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full w-full max-w-5xl mx-auto overflow-y-auto px-6 py-8">
+    <div className="flex flex-col h-full w-full max-w-[70%] mx-auto overflow-y-auto px-6 py-8">
       {/* Header */}
       <div className="mb-12">
         <h2 className="text-3xl font-bold flex items-center gap-3 text-white mb-2">
@@ -443,7 +444,9 @@ export const StockAnalysis: React.FC = () => {
               className="pdf-markdown-content"
               style={{ fontSize: "12px", lineHeight: "1.6", color: "#333" }}
             >
-              <ReactMarkdown>{report}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {report}
+              </ReactMarkdown>
             </div>
 
             <div
@@ -491,8 +494,43 @@ export const StockAnalysis: React.FC = () => {
                 </div>
 
                 {/* Report body */}
-                <div className="markdown-content text-gray-200 text-lg leading-relaxed">
-                  <ReactMarkdown>{report}</ReactMarkdown>
+                <div className="markdown-content text-gray-200 text-lg leading-relaxed overflow-x-auto">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                      table: ({ node, ...props }) => (
+                        <div className="my-6 overflow-x-auto rounded-xl border border-white/10">
+                          <table
+                            className="w-full border-collapse text-sm"
+                            {...props}
+                          />
+                        </div>
+                      ),
+                      thead: ({ node, ...props }) => (
+                        <thead className="bg-white/5 text-left" {...props} />
+                      ),
+                      th: ({ node, ...props }) => (
+                        <th
+                          className="px-4 py-3 font-black uppercase tracking-wider text-[#FF4B4B] border-b border-white/10"
+                          {...props}
+                        />
+                      ),
+                      td: ({ node, ...props }) => (
+                        <td
+                          className="px-4 py-3 border-b border-white/5 text-gray-300"
+                          {...props}
+                        />
+                      ),
+                      tr: ({ node, ...props }) => (
+                        <tr
+                          className="hover:bg-white/5 transition-colors"
+                          {...props}
+                        />
+                      ),
+                    }}
+                  >
+                    {report}
+                  </ReactMarkdown>
                 </div>
 
                 {/* Token / compute summary footer */}
