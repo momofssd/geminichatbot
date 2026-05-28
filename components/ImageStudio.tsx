@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import React, { useRef, useState } from "react";
 import { editImage, generateImage } from "../services/geminiService";
-import { ImageGenSize } from "../types";
+import { ImageGenSize, ModelId } from "../types";
 
 enum StudioMode {
   GENERATE = "generate",
@@ -23,21 +23,17 @@ export const ImageStudio: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedModel, setSelectedModel] = useState(
-    "gemini-3-pro-image-preview",
+    ModelId.GEMINI_3_PRO_IMAGE,
   );
   const [selectedTemplate, setSelectedTemplate] = useState("none");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const proModels = [
-    { id: "gemini-3-pro-image-preview", name: "Nano Banana Pro 1" },
-    { id: "gemini-3-pro-image-v2", name: "Nano Banana Pro 2" },
-    { id: "gemini-3-pro-image-ultra", name: "Nano Banana Pro 3" },
+    { id: ModelId.GEMINI_3_PRO_IMAGE, name: "Gemini 3 Pro Image" },
   ];
 
   const flashModels = [
-    { id: "gemini-2.5-flash-image", name: "Nano Banana Flash 1" },
-    { id: "gemini-2.5-flash-v2", name: "Nano Banana Flash 2" },
-    { id: "gemini-2.5-flash-v3", name: "Nano Banana Flash 3" },
+    { id: ModelId.GEMINI_3_1_FLASH_IMAGE, name: "Gemini 3.1 Flash Image" },
   ];
 
   const templates = [

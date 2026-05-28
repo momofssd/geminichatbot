@@ -23,7 +23,7 @@ export const ChatInterface: React.FC = () => {
   ]);
   const [inputText, setInputText] = useState("");
   const [selectedModel, setSelectedModel] = useState<ModelId>(
-    ModelId.GEMINI_3_FLASH,
+    ModelId.GEMINI_3_5_FLASH,
   );
   const [userSecret] = useState((import.meta as any).env.VITE_AES_KEY || "");
   const [grounding, setGrounding] = useState<GroundingConfig>({
@@ -330,8 +330,8 @@ export const ChatInterface: React.FC = () => {
                 onChange={(e) => setSelectedModel(e.target.value as ModelId)}
                 className="bg-[#0E1117] border border-[#4B4B4B] rounded px-2 py-1 focus:outline-none focus:border-[#FF4B4B]"
               >
-                <option value={ModelId.GEMINI_3_FLASH}>Gemini 3.0 Flash</option>
-                <option value={ModelId.GEMINI_3_PRO}>Gemini 3.0 Pro</option>
+                <option value={ModelId.GEMINI_3_5_FLASH}>Gemini 3.5 Flash</option>
+                <option value={ModelId.GEMINI_31_PRO}>Gemini 3.1 Pro</option>
               </select>
             </div>
 

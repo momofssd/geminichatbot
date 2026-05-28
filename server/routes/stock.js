@@ -2,7 +2,13 @@ import CryptoJS from "crypto-js";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { genAI, GROUNDING_TOOL, GENERATION_CONFIG, SYNTHESIS_RESPONSE_SCHEMA } from "../ai.js";
+import {
+  genAI,
+  GROUNDING_TOOL,
+  GENERATION_CONFIG,
+  SYNTHESIS_RESPONSE_SCHEMA,
+  normalizeModelId,
+} from "../ai.js";
 import { AES_KEY } from "../config.js";
 import {
   ANALYST_SYSTEM_INSTRUCTION,
@@ -64,17 +70,18 @@ export const analyzeStockHandler = async (req, res) => {
     const bytes = CryptoJS.AES.decrypt(p, AES_KEY);
     const decodedPayload = bytes.toString(CryptoJS.enc.Utf8);
     const { ticker, modelId } = JSON.parse(decodedPayload);
+    const normalizedModelId = normalizeModelId(modelId, "gemini-3.1-pro-preview");
     const today = new Date().toISOString().split("T")[0];
 
     console.log(
-      `[${ticker}] Starting phased analysis with ${modelId} — ${today}`,
+      `[${ticker}] Starting phased analysis with ${normalizedModelId} — ${today}`,
     );
 
     // ── Research phases: use grounding tool + low temperature ─────────────────
     // NOTE: Google Search grounding does NOT support response_mime_type JSON,
     // so phases run as plain text. Only the synthesis call uses structured output.
     const researchModel = genAI.getGenerativeModel({
-      model: modelId || "gemini-2.0-flash",
+      model: normalizedModelId,
       systemInstruction: ANALYST_SYSTEM_INSTRUCTION,
       generationConfig: GENERATION_CONFIG,
     });
@@ -83,7 +90,7 @@ export const analyzeStockHandler = async (req, res) => {
     // Structured output (responseMimeType + responseSchema) is incompatible with
     // the googleSearch grounding tool — Gemini API will throw if combined.
     const synthesisModel = genAI.getGenerativeModel({
-      model: modelId || "gemini-2.0-flash",
+      model: normalizedModelId,
       systemInstruction: ANALYST_SYSTEM_INSTRUCTION,
       generationConfig: {
         ...GENERATION_CONFIG,
@@ -149,6 +156,14 @@ export const analyzeStockHandler = async (req, res) => {
       throw new Error("Synthesis model returned malformed JSON. Check schema compatibility.");
     }
 
+    const reportText =
+      typeof parsedReport === "string"
+        ? parsedReport
+        : parsedReport.reportMarkdown ||
+          parsedReport.markdown ||
+          parsedReport.report ||
+          JSON.stringify(parsedReport, null, 2);
+
     const seen = new Set();
     const dedupedChunks = allGroundingChunks.filter((c) => {
       const uri = c.web?.uri;
@@ -169,7 +184,7 @@ export const analyzeStockHandler = async (req, res) => {
             // text representation for backwards-compatible history rendering
             parts: [
               {
-                text: JSON.stringify(parsedReport, null, 2),
+                text: reportText,
                 structured: parsedReport,
               },
             ],
@@ -195,8 +210,9 @@ export const analyzeStockHandler = async (req, res) => {
       modelId,
       date: new Date().toISOString(),
       // Store the parsed object — not just raw text — for consistent re-rendering
-      report: parsedReport,
-      reportText: JSON.stringify(parsedReport, null, 2),
+      report: reportText,
+      structuredReport: parsedReport,
+      reportText,
       usage: responseObj.usageMetadata,
       groundingSources:
         responseObj.candidates[0].groundingMetadata.groundingChunks.map(

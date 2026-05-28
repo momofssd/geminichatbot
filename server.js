@@ -41,6 +41,18 @@ const genAI = new GoogleGenerativeAI(apiKey);
 // ─── Grounding tool ──────────────────────────────────────────────────────────
 const GROUNDING_TOOL = { googleSearch: {} };
 
+const MODEL_ID_ALIASES = new Map([
+  ["Gemini 3.5 Flash", "gemini-3.5-flash"],
+  ["Gemini 3.0 Flash", "gemini-3-flash-preview"],
+  ["Gemini 3 Flash", "gemini-3-flash-preview"],
+  ["Gemini 3.1 Pro", "gemini-3.1-pro-preview"],
+  ["Gemini 3.0 Pro", "gemini-3-pro-preview"],
+  ["Gemini 3 Pro", "gemini-3-pro-preview"],
+]);
+
+const normalizeModelId = (modelId, fallback = "gemini-3.5-flash") =>
+  MODEL_ID_ALIASES.get(modelId) || modelId || fallback;
+
 // ─── /api/chat ────────────────────────────────────────────────────────────────
 app.post("/api/chat", async (req, res) => {
   try {
@@ -63,7 +75,7 @@ app.post("/api/chat", async (req, res) => {
     const { modelId, history, message, attachments, grounding } =
       JSON.parse(decodedPayload);
 
-    const model = genAI.getGenerativeModel({ model: modelId });
+    const model = genAI.getGenerativeModel({ model: normalizeModelId(modelId) });
 
     const tools = [];
     if (grounding?.search) tools.push(GROUNDING_TOOL);
@@ -169,7 +181,9 @@ app.post("/api/generate-image", async (req, res) => {
 app.post("/api/edit-image", async (req, res) => {
   const { base64Image, prompt } = req.body;
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-image" });
+    const model = genAI.getGenerativeModel({
+      model: "gemini-3.1-flash-image-preview",
+    });
     const response = await model.generateContent({
       contents: [
         {

@@ -86,7 +86,7 @@ export const editImageHandler = async (req, res) => {
 
   try {
     const model = genAI.getGenerativeModel({
-      model: modelId || "gemini-2.5-flash-image",
+      model: modelId || "gemini-3.1-flash-image-preview",
     });
     const response = await model.generateContent({
       contents: [

@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js";
-import { genAI, GROUNDING_TOOL } from "../ai.js";
+import { genAI, GROUNDING_TOOL, normalizeModelId } from "../ai.js";
 import { AES_KEY } from "../config.js";
 
 export const chatHandler = async (req, res) => {
@@ -23,7 +23,7 @@ export const chatHandler = async (req, res) => {
     const { modelId, history, message, attachments, grounding } =
       JSON.parse(decodedPayload);
 
-    const model = genAI.getGenerativeModel({ model: modelId });
+    const model = genAI.getGenerativeModel({ model: normalizeModelId(modelId) });
 
     const tools = [];
     if (grounding?.search) tools.push(GROUNDING_TOOL);

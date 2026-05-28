@@ -1,7 +1,7 @@
 export enum ModelId {
-  GEMINI_3_FLASH = "Gemini 3.5 Flash",
-  GEMINI_3_PRO = "gemini-3.1-pro-preview",
-  GEMINI_2_5_FLASH_IMAGE = "gemini-2.5-flash-image", // For Image Editing
+  GEMINI_3_5_FLASH = "gemini-3-flash-preview",
+  GEMINI_31_PRO = "gemini-3.1-pro-preview",
+  GEMINI_3_1_FLASH_IMAGE = "gemini-3.1-flash-image-preview", // For Image Editing
   GEMINI_3_PRO_IMAGE = "gemini-3-pro-image-preview", // For Image Gen
 }
 

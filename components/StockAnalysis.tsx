@@ -21,6 +21,7 @@ import {
   deleteStockHistory,
   getStockHistory,
 } from "../services/geminiService";
+import { ModelId } from "../types";
 
 const PHASES = [
   { label: "Fundamentals & SEC Filings", icon: Database },
@@ -30,13 +31,13 @@ const PHASES = [
 ];
 
 const STOCK_MODELS = [
-  { id: "gemini-3-flash-preview", label: "Gemini 3 Flash", speed: "Fastest" },
-  { id: "gemini-3-pro-preview", label: "Gemini 3 Pro", speed: "Deep Research" },
+  { id: ModelId.GEMINI_3_5_FLASH, label: "Gemini 3.5 Flash", speed: "Fastest" },
+  { id: ModelId.GEMINI_31_PRO, label: "Gemini 3.1 Pro", speed: "Deep Research" },
 ];
 
 export const StockAnalysis: React.FC = () => {
   const [ticker, setTicker] = useState("");
-  const [selectedModel, setSelectedModel] = useState("gemini-3-pro-preview");
+  const [selectedModel, setSelectedModel] = useState(ModelId.GEMINI_31_PRO);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [currentPhase, setCurrentPhase] = useState(-1);
   const [report, setReport] = useState<string | null>(null);

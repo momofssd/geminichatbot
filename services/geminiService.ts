@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js";
-import { Attachment, ImageGenSize } from "../types";
+import { Attachment, ImageGenSize, ModelId } from "../types";
 
 export const streamChat = async (
   modelId: string,
@@ -111,7 +111,7 @@ export const analyzeStock = async (
   ticker: string,
   userSecret: string,
   saveToHistory: boolean = false,
-  modelId: string = "gemini-3-pro-preview",
+  modelId: string = ModelId.GEMINI_31_PRO,
 ) => {
   const payload = CryptoJS.AES.encrypt(
     JSON.stringify({ ticker, saveToHistory, modelId }),
