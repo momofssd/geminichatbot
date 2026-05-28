@@ -61,22 +61,32 @@ export const streamChat = async (
   };
 };
 
-export const generateImage = async (prompt: string, size: ImageGenSize) => {
+export const generateImage = async (
+  prompt: string,
+  size: ImageGenSize,
+  modelId: string,
+  template: string,
+) => {
   const response = await fetch("/api/generate-image", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt, size }),
+    body: JSON.stringify({ prompt, size, modelId, template }),
   });
   const data = await response.json();
   if (data.error) throw new Error(data.error);
   return data.images;
 };
 
-export const editImage = async (base64Image: string, prompt: string) => {
+export const editImage = async (
+  base64Image: string,
+  prompt: string,
+  modelId: string,
+  template: string,
+) => {
   const response = await fetch("/api/edit-image", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ base64Image, prompt }),
+    body: JSON.stringify({ base64Image, prompt, modelId, template }),
   });
   const data = await response.json();
   if (data.error) throw new Error(data.error);

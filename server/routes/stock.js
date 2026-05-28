@@ -2,7 +2,7 @@ import CryptoJS from "crypto-js";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { genAI, GROUNDING_TOOL } from "../ai.js";
+import { genAI, GROUNDING_TOOL, GENERATION_CONFIG, SYNTHESIS_RESPONSE_SCHEMA } from "../ai.js";
 import { AES_KEY } from "../config.js";
 import {
   ANALYST_SYSTEM_INSTRUCTION,
@@ -16,7 +16,6 @@ const HISTORY_DIR = path.resolve(process.cwd(), "server/stockSearch");
 
 console.log("Stock History Directory:", HISTORY_DIR);
 
-// Ensure the directory exists
 const ensureDir = async () => {
   try {
     await fs.mkdir(HISTORY_DIR, { recursive: true });
@@ -41,7 +40,6 @@ export const getStockHistoryHandler = async (req, res) => {
           return JSON.parse(content);
         }),
     );
-    // Sort by date descending
     history.sort((a, b) => new Date(b.date) - new Date(a.date));
     res.json(history);
   } catch (error) {
@@ -72,9 +70,26 @@ export const analyzeStockHandler = async (req, res) => {
       `[${ticker}] Starting phased analysis with ${modelId} — ${today}`,
     );
 
-    const model = genAI.getGenerativeModel({
-      model: modelId || "gemini-3-pro-preview",
+    // ── Research phases: use grounding tool + low temperature ─────────────────
+    // NOTE: Google Search grounding does NOT support response_mime_type JSON,
+    // so phases run as plain text. Only the synthesis call uses structured output.
+    const researchModel = genAI.getGenerativeModel({
+      model: modelId || "gemini-2.0-flash",
       systemInstruction: ANALYST_SYSTEM_INSTRUCTION,
+      generationConfig: GENERATION_CONFIG,
+    });
+
+    // ── Synthesis model: structured JSON output, no grounding tool ────────────
+    // Structured output (responseMimeType + responseSchema) is incompatible with
+    // the googleSearch grounding tool — Gemini API will throw if combined.
+    const synthesisModel = genAI.getGenerativeModel({
+      model: modelId || "gemini-2.0-flash",
+      systemInstruction: ANALYST_SYSTEM_INSTRUCTION,
+      generationConfig: {
+        ...GENERATION_CONFIG,
+        responseMimeType: "application/json",
+        responseSchema: SYNTHESIS_RESPONSE_SCHEMA,
+      },
     });
 
     const phasePrompts = buildPhasePrompts(ticker, today);
@@ -83,11 +98,11 @@ export const analyzeStockHandler = async (req, res) => {
     const allSearchQueries = [];
     let totalTokens = 0;
 
-    // ── Run three focused research phases in parallel for speed ──────────────
+    // ── Run three focused research phases in parallel ─────────────────────────
     console.log(`[${ticker}] Running phases in parallel...`);
     const phasePromises = phasePrompts.map((p, i) => {
       console.log(`[${ticker}] Phase ${i + 1} started.`);
-      return model.generateContent({
+      return researchModel.generateContent({
         contents: [{ role: "user", parts: [{ text: p }] }],
         tools: [GROUNDING_TOOL],
       });
@@ -111,17 +126,28 @@ export const analyzeStockHandler = async (req, res) => {
       console.log(`[${ticker}] Phase ${i + 1} results gathered.`);
     }
 
-    // ── Final synthesis call ─────────────────────────────────────────────────
+    // ── Final synthesis: structured JSON, deterministic output ───────────────
     console.log(`[${ticker}] Running synthesis...`);
     const synthesisPrompt = buildSynthesisPrompt(ticker, phaseResults, today);
 
-    const synthesisResponse = await model.generateContent({
+    const synthesisResponse = await synthesisModel.generateContent({
       contents: [{ role: "user", parts: [{ text: synthesisPrompt }] }],
+      // No grounding tool here — incompatible with responseSchema
     });
 
     const synthCandidate = synthesisResponse.response.candidates?.[0];
     totalTokens +=
       synthesisResponse.response.usageMetadata?.totalTokenCount || 0;
+
+    // Parse and validate the structured JSON output
+    let parsedReport;
+    try {
+      const rawText = synthCandidate?.content?.parts?.[0]?.text || "{}";
+      parsedReport = JSON.parse(rawText);
+    } catch (parseErr) {
+      console.error(`[${ticker}] Failed to parse structured synthesis output:`, parseErr);
+      throw new Error("Synthesis model returned malformed JSON. Check schema compatibility.");
+    }
 
     const seen = new Set();
     const dedupedChunks = allGroundingChunks.filter((c) => {
@@ -138,7 +164,16 @@ export const analyzeStockHandler = async (req, res) => {
     const responseObj = {
       candidates: [
         {
-          content: synthCandidate?.content,
+          content: {
+            // Store both: raw structured JSON for programmatic use, and a flat
+            // text representation for backwards-compatible history rendering
+            parts: [
+              {
+                text: JSON.stringify(parsedReport, null, 2),
+                structured: parsedReport,
+              },
+            ],
+          },
           groundingMetadata: {
             groundingChunks: dedupedChunks,
             webSearchQueries: [...new Set(allSearchQueries)],
@@ -153,14 +188,15 @@ export const analyzeStockHandler = async (req, res) => {
       AES_KEY,
     ).toString();
 
-    // Save to history automatically
     const id = Date.now().toString();
     const historyEntry = {
       id,
       ticker: ticker.toUpperCase(),
       modelId,
       date: new Date().toISOString(),
-      report: responseObj.candidates[0].content.parts[0].text,
+      // Store the parsed object — not just raw text — for consistent re-rendering
+      report: parsedReport,
+      reportText: JSON.stringify(parsedReport, null, 2),
       usage: responseObj.usageMetadata,
       groundingSources:
         responseObj.candidates[0].groundingMetadata.groundingChunks.map(
