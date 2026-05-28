@@ -7,6 +7,8 @@ export const GROUNDING_TOOL = { googleSearch: {} };
 
 const MODEL_ID_ALIASES = new Map([
   ["Gemini 3.5 Flash", "gemini-3.5-flash"],
+  ["Gemini 3.1 Flash Lite", "gemini-3.1-flash-lite"],
+  ["Gemini 3.1 Flash-Lite", "gemini-3.1-flash-lite"],
   ["Gemini 3.0 Flash", "gemini-3-flash-preview"],
   ["Gemini 3 Flash", "gemini-3-flash-preview"],
   ["Gemini 3.1 Pro", "gemini-3.1-pro-preview"],

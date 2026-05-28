@@ -32,6 +32,11 @@ const PHASES = [
 
 const STOCK_MODELS = [
   { id: ModelId.GEMINI_3_5_FLASH, label: "Gemini 3.5 Flash", speed: "Fastest" },
+  {
+    id: ModelId.GEMINI_31_FLASH_LITE,
+    label: "Gemini 3.1 Flash Lite",
+    speed: "Lightweight",
+  },
   { id: ModelId.GEMINI_31_PRO, label: "Gemini 3.1 Pro", speed: "Deep Research" },
 ];
 
