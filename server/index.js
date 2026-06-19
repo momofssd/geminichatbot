@@ -4,7 +4,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { port } from "./config.js";
 import { chatHandler } from "./routes/chat.js";
-import { editImageHandler, generateImageHandler } from "./routes/image.js";
 import {
   analyzeStockHandler,
   deleteStockHistoryHandler,
@@ -23,8 +22,6 @@ app.use(express.static(path.join(__dirname, "../dist")));
 
 // API Routes
 app.post("/api/chat", chatHandler);
-app.post("/api/generate-image", generateImageHandler);
-app.post("/api/edit-image", editImageHandler);
 app.post("/api/analyze-stock", analyzeStockHandler);
 app.get("/api/stock-history", getStockHistoryHandler);
 app.delete("/api/stock-history/:id", deleteStockHistoryHandler);

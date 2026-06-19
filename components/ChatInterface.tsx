@@ -23,7 +23,7 @@ export const ChatInterface: React.FC = () => {
   ]);
   const [inputText, setInputText] = useState("");
   const [selectedModel, setSelectedModel] = useState<ModelId>(
-    ModelId.GEMINI_31_FLASH_LITE,
+    ModelId.DEEPSEEK_V4_FLASH,
   );
   const [userSecret] = useState((import.meta as any).env.VITE_AES_KEY || "");
   const [grounding, setGrounding] = useState<GroundingConfig>({
@@ -320,8 +320,8 @@ export const ChatInterface: React.FC = () => {
     >
       {/* Drag Overlay */}
       {isDragging && (
-        <div className="absolute inset-0 z-50 bg-[#0E1117]/80 flex items-center justify-center border-4 border-dashed border-[#FF4B4B] m-4 rounded-xl">
-          <div className="text-2xl font-bold text-white flex flex-col items-center gap-2">
+        <div className="absolute inset-0 z-50 bg-[#F5F7F2]/80 flex items-center justify-center border-4 border-dashed border-[#00843D] m-4 rounded-xl">
+          <div className="text-2xl font-bold text-[#1F2A24] flex flex-col items-center gap-2">
             <Paperclip size={48} />
             Drop files to attach
           </div>
@@ -333,14 +333,14 @@ export const ChatInterface: React.FC = () => {
         <h2 className="text-3xl font-bold mb-6">Chat Assistant</h2>
 
         {/* Controls Container */}
-        <div className="bg-[#262730] p-4 rounded-lg flex flex-wrap gap-4 items-center justify-between border border-[#3b3d45]">
+        <div className="bg-[#FFFFFF] p-4 rounded-lg flex flex-wrap gap-4 items-center justify-between border border-[#D7E2D4]">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
-            <div className="flex items-center gap-2 text-sm font-medium text-gray-300">
+            <div className="flex items-center gap-2 text-sm font-medium text-[#3D4A43]">
               <span>Model:</span>
               <select
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value as ModelId)}
-                className="bg-[#0E1117] border border-[#4B4B4B] rounded px-2 py-1 focus:outline-none focus:border-[#FF4B4B]"
+                className="bg-[#FFFFFF] border border-[#B8C8B3] rounded px-2 py-1 text-[#1F2A24] focus:outline-none focus:border-[#00843D]"
               >
                 <option value={ModelId.GEMINI_3_5_FLASH}>Gemini 3.5 Flash</option>
                 <option value={ModelId.GEMINI_31_FLASH_LITE}>
@@ -358,8 +358,8 @@ export const ChatInterface: React.FC = () => {
               <label
                 className={`flex items-center gap-2 text-sm transition-colors ${
                   isDeepSeekSelected
-                    ? "cursor-not-allowed text-gray-600"
-                    : "cursor-pointer hover:text-white text-gray-300"
+                    ? "cursor-not-allowed text-[#4F5B54]"
+                    : "cursor-pointer hover:text-[#1F2A24] text-[#3D4A43]"
                 }`}
               >
                 <input
@@ -369,7 +369,7 @@ export const ChatInterface: React.FC = () => {
                   onChange={() =>
                     setGrounding((g) => ({ ...g, search: !g.search }))
                   }
-                  className="accent-[#FF4B4B] w-4 h-4 rounded"
+                  className="accent-[#00843D] w-4 h-4 rounded"
                 />
                 <Globe size={14} /> Search
               </label>
@@ -387,14 +387,14 @@ export const ChatInterface: React.FC = () => {
       </div>
 
       {/* Input Area */}
-      <div className="p-6 pb-8 bg-[#0E1117]">
+      <div className="p-6 pb-8 bg-[#F5F7F2]">
         {/* Attachment Previews */}
         {attachments.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
             {attachments.map((att) => (
               <div
                 key={att.id}
-                className="relative group bg-[#262730] border border-[#3b3d45] rounded-md p-2 flex items-center gap-2 max-w-[200px]"
+                className="relative group bg-[#FFFFFF] border border-[#D7E2D4] rounded-md p-2 flex items-center gap-2 max-w-[200px]"
               >
                 {att.type === "image" ? (
                   <img
@@ -411,10 +411,10 @@ export const ChatInterface: React.FC = () => {
                 )}
 
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs text-white truncate" title={att.name}>
+                  <p className="text-xs text-[#1F2A24] truncate" title={att.name}>
                     {att.name}
                   </p>
-                  <p className="text-[10px] text-gray-400 uppercase">
+                  <p className="text-[10px] text-[#66736B] uppercase">
                     {att.type === "text" ? "Converted" : att.type}
                   </p>
                 </div>
@@ -446,7 +446,7 @@ export const ChatInterface: React.FC = () => {
               onKeyDown={handleKeyDown}
               onPaste={handlePaste}
               placeholder="Message assistant... (Shift+Enter for new line)"
-              className="w-full bg-[#262730] text-white placeholder-gray-500 rounded-md px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#FF4B4B] border border-transparent pr-10 resize-none overflow-hidden min-h-[50px] max-h-[200px]"
+              className="w-full bg-[#FFFFFF] text-[#1F2A24] placeholder-[#7C887F] rounded-md px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#00843D] border border-transparent pr-10 resize-none overflow-hidden min-h-[50px] max-h-[200px]"
               disabled={isStreaming}
               rows={1}
               style={{ height: "50px" }}
@@ -454,7 +454,7 @@ export const ChatInterface: React.FC = () => {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="absolute right-2 bottom-3 p-2 text-gray-400 hover:text-white hover:bg-[#3b3d45] rounded-full transition-colors"
+              className="absolute right-2 bottom-3 p-2 text-[#66736B] hover:text-[#1F2A24] hover:bg-[#D7E2D4] rounded-full transition-colors"
               title="Attach files (Image, PDF, Word, Excel)"
             >
               <Paperclip size={20} />
@@ -476,7 +476,7 @@ export const ChatInterface: React.FC = () => {
               isStreaming ||
               isProcessingFile
             }
-            className="px-6 h-[50px] flex items-center justify-center bg-[#FF4B4B] hover:bg-[#FF3333] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-md font-semibold transition-colors"
+            className="px-6 h-[50px] flex items-center justify-center bg-[#00843D] hover:bg-[#006F34] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-md font-semibold transition-colors"
           >
             {isStreaming ? (
               <Loader2 className="animate-spin" size={20} />
@@ -485,7 +485,7 @@ export const ChatInterface: React.FC = () => {
             )}
           </button>
         </form>
-        <div className="text-center text-xs text-gray-500 mt-2">
+        <div className="text-center text-xs text-[#66736B] mt-2">
           Supports: Images, PDF, Word, Excel, Text. Docs are parsed for context.
           Shift+Enter for line breaks.
         </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChatInterface } from "./components/ChatInterface";
-import { ImageStudio } from "./components/ImageStudio";
 import { Sidebar } from "./components/Sidebar";
 import { StockAnalysis } from "./components/StockAnalysis";
 import { AppMode } from "./types";
@@ -15,7 +14,7 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen w-screen bg-[#0E1117] text-white overflow-hidden">
+    <div className="flex h-screen w-screen bg-[#F5F7F2] text-[#1F2A24] overflow-hidden">
       <Sidebar
         currentMode={currentMode}
         setMode={setMode}
@@ -26,11 +25,6 @@ function App() {
           className={`h-full ${currentMode === AppMode.CHAT ? "block" : "hidden"}`}
         >
           <ChatInterface key={chatSessionKey} />
-        </div>
-        <div
-          className={`h-full ${currentMode === AppMode.IMAGE_STUDIO ? "block" : "hidden"}`}
-        >
-          <ImageStudio />
         </div>
         <div
           className={`h-full ${currentMode === AppMode.STOCK_ANALYSIS ? "block" : "hidden"}`}

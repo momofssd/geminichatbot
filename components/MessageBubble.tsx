@@ -20,22 +20,22 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
   };
 
   return (
-    <div className={`group flex gap-4 ${isUser ? 'bg-transparent' : 'bg-[#262730]/30'} p-6 rounded-lg mb-4 border border-transparent hover:border-[#3b3d45] transition-colors relative`}>
+    <div className={`group flex gap-4 ${isUser ? 'bg-transparent' : 'bg-[#FFFFFF]'} p-6 rounded-lg mb-4 border border-[#E2E8DF] hover:border-[#B8C8B3] transition-colors relative`}>
       <div className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 ${
-        isUser ? 'bg-[#FF4B4B]' : 'bg-gray-600'
+        isUser ? 'bg-[#00843D]' : 'bg-[#66736B]'
       }`}>
         {isUser ? <User className="w-5 h-5 text-white" /> : <Bot className="w-5 h-5 text-white" />}
       </div>
 
       <div className="flex-1 overflow-hidden">
         <div className="flex justify-between items-center mb-2">
-            <div className="font-semibold text-sm text-gray-300">
+            <div className="font-semibold text-sm text-[#3D4A43]">
                 {isUser ? "You" : "Assistant"}
             </div>
             {!isUser && !message.isLoading && (
                 <button 
                     onClick={handleCopy} 
-                    className="text-gray-500 hover:text-white transition-colors p-1 rounded hover:bg-[#3b3d45]"
+                    className="text-[#66736B] hover:text-[#1F2A24] transition-colors p-1 rounded hover:bg-[#D7E2D4]"
                     title="Copy response"
                 >
                     {copied ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
@@ -47,7 +47,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {message.attachments && message.attachments.length > 0 && (
         <div className="flex gap-2 mb-4 flex-wrap">
             {message.attachments.map((att, i) => (
-                <div key={i} className="border border-[#3b3d45] rounded overflow-hidden bg-[#1E1E1E]">
+                <div key={i} className="border border-[#D7E2D4] rounded overflow-hidden bg-[#F8FAF6]">
                     {att.type === 'image' ? (
                          <img src={`data:${att.mimeType};base64,${att.data}`} alt={att.name} className="max-h-[200px] max-w-full" />
                     ) : (
@@ -60,8 +60,8 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                                 <FileText className="w-8 h-8 text-red-400" />
                              )}
                              <div>
-                                 <p className="text-sm font-medium text-white">{att.name}</p>
-                                 <p className="text-[10px] text-gray-500 uppercase">{att.type === 'pdf' ? 'PDF' : 'PARSED TEXT'}</p>
+                                 <p className="text-sm font-medium text-[#1F2A24]">{att.name}</p>
+                                 <p className="text-[10px] text-[#66736B] uppercase">{att.type === 'pdf' ? 'PDF' : 'PARSED TEXT'}</p>
                              </div>
                         </div>
                     )}
@@ -71,7 +71,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         )}
 
         {/* Text Content */}
-        <div className="markdown-content text-gray-200 text-sm md:text-base">
+        <div className="markdown-content text-[#1F2A24] text-sm md:text-base">
         {message.isLoading ? (
             <div className="flex gap-1 items-center h-6">
                 <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
@@ -96,15 +96,15 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                         };
 
                         return !inline && match ? (
-                            <div className="relative group/code my-4 rounded-md overflow-hidden border border-[#3b3d45]">
-                                <div className="flex justify-between items-center bg-[#1E1E1E] px-4 py-1.5 border-b border-[#3b3d45]">
-                                    <span className="text-xs text-gray-400 font-mono flex items-center gap-1">
+                            <div className="relative group/code my-4 rounded-md overflow-hidden border border-[#D7E2D4]">
+                                <div className="flex justify-between items-center bg-[#F8FAF6] px-4 py-1.5 border-b border-[#D7E2D4]">
+                                    <span className="text-xs text-[#66736B] font-mono flex items-center gap-1">
                                         <Terminal size={12} />
                                         {match[1]}
                                     </span>
                                     <button
                                         onClick={handleCodeCopy}
-                                        className="text-gray-400 hover:text-white text-xs flex items-center gap-1 transition-colors"
+                                        className="text-[#66736B] hover:text-[#1F2A24] text-xs flex items-center gap-1 transition-colors"
                                     >
                                         {codeCopied ? (
                                             <>
@@ -130,7 +130,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                                 </SyntaxHighlighter>
                             </div>
                         ) : (
-                            <code className="bg-[#3b3d45] text-[#FF4B4B] px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
+                            <code className="bg-[#D7E2D4] text-[#00843D] px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
                                 {children}
                             </code>
                         );
@@ -144,14 +144,14 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
         {/* Grounding Sources */}
         {!isUser && message.groundingMetadata && (
-          <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-[#3b3d45]/50">
+          <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-[#D7E2D4]/50">
             {message.groundingMetadata.search?.map((source, idx) => (
                <a 
                  key={`search-${idx}`}
                  href={source.uri}
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#3b3d45] hover:bg-[#4b4d55] transition-colors text-xs text-blue-300 no-underline"
+                 className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#EEF5EA] hover:bg-[#D7E2D4] transition-colors text-xs text-[#0067B1] no-underline"
                >
                  <Search className="w-3 h-3" />
                  <span className="truncate max-w-[200px]">{source.title || source.uri}</span>
@@ -163,7 +163,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
         {/* Token Usage Stats */}
         {!isUser && message.usage && (
-            <div className="mt-3 flex items-center gap-4 text-[10px] text-gray-500 font-mono opacity-60 hover:opacity-100 transition-opacity">
+            <div className="mt-3 flex items-center gap-4 text-[10px] text-[#66736B] font-mono opacity-60 hover:opacity-100 transition-opacity">
                 <div className="flex items-center gap-1">
                     <Cpu size={10} />
                     <span>Usage:</span>

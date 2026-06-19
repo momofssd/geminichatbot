@@ -4,20 +4,11 @@ export enum ModelId {
   GEMINI_31_PRO = "gemini-3.1-pro-preview",
   DEEPSEEK_V4_FLASH = "deepseek-v4-flash",
   DEEPSEEK_V4_PRO = "deepseek-v4-pro",
-  GEMINI_3_1_FLASH_IMAGE = "gemini-3.1-flash-image-preview", // For Image Editing
-  GEMINI_3_PRO_IMAGE = "gemini-3-pro-image-preview", // For Image Gen
 }
 
 export enum AppMode {
   CHAT = "chat",
-  IMAGE_STUDIO = "image_studio",
   STOCK_ANALYSIS = "stock_analysis",
-}
-
-export enum ImageGenSize {
-  SIZE_1K = "1K",
-  SIZE_2K = "2K",
-  SIZE_4K = "4K",
 }
 
 export interface UsageMetadata {

@@ -224,19 +224,19 @@ export const StockAnalysis: React.FC = () => {
     <div className="flex flex-col h-full w-full max-w-[70%] mx-auto overflow-y-auto px-6 py-8">
       {/* Header */}
       <div className="mb-12">
-        <h2 className="text-3xl font-bold flex items-center gap-3 text-white mb-2">
-          <TrendingUp className="text-[#FF4B4B]" size={32} />
+        <h2 className="text-3xl font-bold flex items-center gap-3 text-[#1F2A24] mb-2">
+          <TrendingUp className="text-[#00843D]" size={32} />
           Institutional Research
         </h2>
-        <p className="text-gray-500">
+        <p className="text-[#66736B]">
           Wall Street grade intelligence with real-time web grounding across
-          8–10 authoritative sources.
+          8-10 authoritative sources.
         </p>
       </div>
 
       {/* History Bar */}
       <div className="mb-12 overflow-x-auto no-scrollbar pb-4 min-h-[130px]">
-        <h3 className="text-xs font-black text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+        <h3 className="text-xs font-black text-[#66736B] uppercase tracking-widest mb-4 flex items-center gap-2">
           <Clock size={14} /> Recent Analysis History
         </h3>
         {history.length > 0 ? (
@@ -245,19 +245,19 @@ export const StockAnalysis: React.FC = () => {
               <div
                 key={entry.id || i}
                 onClick={() => loadFromHistory(entry)}
-                className="group relative flex-shrink-0 bg-[#262730] hover:bg-[#2d2e38] border border-white/5 p-4 rounded-2xl cursor-pointer transition-all w-48 shadow-lg overflow-hidden"
+                className="group relative flex-shrink-0 bg-[#FFFFFF] hover:bg-[#F1F6EE] border border-[#D7E2D4] p-4 rounded-2xl cursor-pointer transition-all w-48 shadow-lg overflow-hidden"
               >
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex items-center gap-2">
-                    <div className="bg-[#FF4B4B]/20 p-1.5 rounded-lg">
-                      <TrendingUp size={14} className="text-[#FF4B4B]" />
+                    <div className="bg-[#00843D]/20 p-1.5 rounded-lg">
+                      <TrendingUp size={14} className="text-[#00843D]" />
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-sm font-black text-white leading-tight">
+                      <span className="text-sm font-black text-[#1F2A24] leading-tight">
                         {entry.ticker}
                       </span>
                       {entry.modelId && (
-                        <span className="text-[8px] font-bold text-gray-400 uppercase tracking-tighter">
+                        <span className="text-[8px] font-bold text-[#66736B] uppercase tracking-tighter">
                           {STOCK_MODELS.find((m) => m.id === entry.modelId)
                             ?.label || entry.modelId}
                         </span>
@@ -266,22 +266,22 @@ export const StockAnalysis: React.FC = () => {
                   </div>
                   <button
                     onClick={(e) => deleteFromHistory(e, entry.id)}
-                    className="text-gray-600 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all"
+                    className="text-[#4F5B54] hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all"
                   >
                     <Trash2 size={14} />
                   </button>
                 </div>
-                <p className="text-[10px] text-gray-500 flex items-center gap-1">
+                <p className="text-[10px] text-[#66736B] flex items-center gap-1">
                   <Clock size={10} />
                   {new Date(entry.date).toLocaleDateString()}
                 </p>
-                <div className="absolute bottom-0 left-0 h-1 bg-[#FF4B4B]/20 w-0 group-hover:w-full transition-all duration-300" />
+                <div className="absolute bottom-0 left-0 h-1 bg-[#00843D]/20 w-0 group-hover:w-full transition-all duration-300" />
               </div>
             ))}
           </div>
         ) : (
-          <div className="bg-[#262730]/30 border border-dashed border-white/10 rounded-2xl p-6 text-center">
-            <p className="text-gray-600 text-sm italic">
+          <div className="bg-[#FFFFFF]/30 border border-dashed border-[#D7E2D4] rounded-2xl p-6 text-center">
+            <p className="text-[#4F5B54] text-sm italic">
               No recent searches found. Run an analysis to see history.
             </p>
           </div>
@@ -289,7 +289,7 @@ export const StockAnalysis: React.FC = () => {
       </div>
 
       {/* Search bar */}
-      <div className="bg-[#262730] p-8 rounded-3xl border border-white/5 mb-8 shadow-xl">
+      <div className="bg-[#FFFFFF] p-8 rounded-3xl border border-[#D7E2D4] mb-8 shadow-xl">
         <div className="max-w-2xl mx-auto">
           <div className="flex justify-center gap-4 mb-6">
             {STOCK_MODELS.map((m) => (
@@ -298,8 +298,8 @@ export const StockAnalysis: React.FC = () => {
                 onClick={() => setSelectedModel(m.id)}
                 className={`flex-1 px-4 py-3 rounded-2xl border transition-all text-left ${
                   selectedModel === m.id
-                    ? "bg-[#FF4B4B]/10 border-[#FF4B4B] text-white"
-                    : "bg-black/20 border-white/5 text-gray-500 hover:border-white/20"
+                    ? "bg-[#00843D]/10 border-[#00843D] text-[#1F2A24]"
+                    : "bg-[#F8FAF6] border-[#D7E2D4] text-[#66736B] hover:border-[#B8C8B3]"
                 }`}
               >
                 <p className="text-xs font-black uppercase tracking-widest mb-1">
@@ -311,18 +311,18 @@ export const StockAnalysis: React.FC = () => {
           </div>
 
           <form onSubmit={handleAnalyze} className="relative flex items-center">
-            <DollarSign className="absolute left-6 text-gray-400" size={24} />
+            <DollarSign className="absolute left-6 text-[#66736B]" size={24} />
             <input
               type="text"
               value={ticker}
               onChange={(e) => setTicker(e.target.value.toUpperCase())}
               placeholder="ENTER TICKER (E.G. NVDA)"
-              className="w-full bg-black/50 border border-white/10 rounded-full py-5 pl-14 pr-32 text-xl font-black text-white tracking-widest focus:ring-2 focus:ring-[#FF4B4B] outline-none placeholder-gray-700 uppercase"
+              className="w-full bg-[#FFFFFF] border border-[#D7E2D4] rounded-full py-5 pl-14 pr-32 text-xl font-black text-[#1F2A24] tracking-widest focus:ring-2 focus:ring-[#00843D] outline-none placeholder-[#7C887F] uppercase"
             />
             <button
               type="submit"
               disabled={!ticker.trim() || isAnalyzing}
-              className="absolute right-2.5 top-2.5 bottom-2.5 bg-[#FF4B4B] hover:bg-[#FF3333] text-white px-8 rounded-full font-bold transition-all disabled:opacity-50"
+              className="absolute right-2.5 top-2.5 bottom-2.5 bg-[#00843D] hover:bg-[#006F34] text-white px-8 rounded-full font-bold transition-all disabled:opacity-50"
             >
               {isAnalyzing ? <Loader2 className="animate-spin" /> : "ANALYZE"}
             </button>
@@ -335,9 +335,9 @@ export const StockAnalysis: React.FC = () => {
 
       {/* Phase progress indicator */}
       {isAnalyzing && (
-        <div className="bg-[#262730]/70 rounded-2xl border border-white/5 p-6 mb-8">
-          <p className="text-xs font-black text-gray-500 uppercase tracking-widest mb-5">
-            Research in Progress — {ticker}
+        <div className="bg-[#FFFFFF]/70 rounded-2xl border border-[#D7E2D4] p-6 mb-8">
+          <p className="text-xs font-black text-[#66736B] uppercase tracking-widest mb-5">
+            Research in Progress - {ticker}
           </p>
           <div className="space-y-3">
             {PHASES.map((phase, i) => {
@@ -349,7 +349,7 @@ export const StockAnalysis: React.FC = () => {
                   key={i}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                     active
-                      ? "bg-[#FF4B4B]/10 border border-[#FF4B4B]/30"
+                      ? "bg-[#00843D]/10 border border-[#00843D]/30"
                       : done
                         ? "opacity-40"
                         : "opacity-20"
@@ -358,24 +358,22 @@ export const StockAnalysis: React.FC = () => {
                   {active ? (
                     <Loader2
                       size={16}
-                      className="text-[#FF4B4B] animate-spin shrink-0"
+                      className="text-[#00843D] animate-spin shrink-0"
                     />
                   ) : done ? (
                     <div className="w-4 h-4 rounded-full bg-green-500 shrink-0 flex items-center justify-center">
-                      <span className="text-[8px] text-white font-black">
-                        ✓
-                      </span>
+                      <span className="h-1.5 w-1.5 rounded-full bg-white" />
                     </div>
                   ) : (
-                    <Icon size={16} className="text-gray-600 shrink-0" />
+                    <Icon size={16} className="text-[#4F5B54] shrink-0" />
                   )}
                   <span
                     className={`text-sm font-semibold ${
                       active
-                        ? "text-white"
+                        ? "text-[#1F2A24]"
                         : done
-                          ? "text-gray-400"
-                          : "text-gray-600"
+                          ? "text-[#66736B]"
+                          : "text-[#4F5B54]"
                     }`}
                   >
                     {i + 1}. {phase.label}
@@ -477,18 +475,18 @@ export const StockAnalysis: React.FC = () => {
             <div className="lg:col-span-3 space-y-6">
               <div
                 ref={reportRef}
-                className="bg-[#262730]/50 p-10 rounded-3xl border border-white/5"
+                className="bg-[#FFFFFF]/50 p-10 rounded-3xl border border-[#D7E2D4]"
               >
                 {/* Report header */}
-                <div className="flex justify-between items-center mb-8 pb-4 border-b border-white/5">
-                  <h3 className="text-2xl font-bold text-white flex items-center gap-3 uppercase tracking-wider">
-                    <Activity size={24} className="text-[#FF4B4B]" />
+                <div className="flex justify-between items-center mb-8 pb-4 border-b border-[#D7E2D4]">
+                  <h3 className="text-2xl font-bold text-[#1F2A24] flex items-center gap-3 uppercase tracking-wider">
+                    <Activity size={24} className="text-[#00843D]" />
                     Thesis: {ticker}
                   </h3>
                   <button
                     onClick={handleDownloadPDF}
                     disabled={isExporting}
-                    className="flex items-center gap-2 bg-[#FF4B4B]/10 hover:bg-[#FF4B4B]/20 text-[#FF4B4B] px-4 py-2 rounded-xl border border-[#FF4B4B]/30 transition-all text-sm font-bold disabled:opacity-50"
+                    className="flex items-center gap-2 bg-[#00843D]/10 hover:bg-[#00843D]/20 text-[#00843D] px-4 py-2 rounded-xl border border-[#00843D]/30 transition-all text-sm font-bold disabled:opacity-50"
                   >
                     {isExporting ? (
                       <Loader2 size={16} className="animate-spin" />
@@ -500,12 +498,12 @@ export const StockAnalysis: React.FC = () => {
                 </div>
 
                 {/* Report body */}
-                <div className="markdown-content text-gray-200 text-lg leading-relaxed overflow-x-auto">
+                <div className="markdown-content text-[#1F2A24] text-lg leading-relaxed overflow-x-auto">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     components={{
                       table: ({ node, ...props }) => (
-                        <div className="my-6 overflow-x-auto rounded-xl border border-white/10">
+                        <div className="my-6 overflow-x-auto rounded-xl border border-[#D7E2D4]">
                           <table
                             className="w-full border-collapse text-sm"
                             {...props}
@@ -513,23 +511,23 @@ export const StockAnalysis: React.FC = () => {
                         </div>
                       ),
                       thead: ({ node, ...props }) => (
-                        <thead className="bg-white/5 text-left" {...props} />
+                        <thead className="bg-[#EEF5EA] text-left" {...props} />
                       ),
                       th: ({ node, ...props }) => (
                         <th
-                          className="px-4 py-3 font-black uppercase tracking-wider text-[#FF4B4B] border-b border-white/10"
+                          className="px-4 py-3 font-black uppercase tracking-wider text-[#00843D] border-b border-[#D7E2D4]"
                           {...props}
                         />
                       ),
                       td: ({ node, ...props }) => (
                         <td
-                          className="px-4 py-3 border-b border-white/5 text-gray-300"
+                          className="px-4 py-3 border-b border-[#D7E2D4] text-[#3D4A43]"
                           {...props}
                         />
                       ),
                       tr: ({ node, ...props }) => (
                         <tr
-                          className="hover:bg-white/5 transition-colors"
+                          className="hover:bg-[#EEF5EA] transition-colors"
                           {...props}
                         />
                       ),
@@ -541,30 +539,30 @@ export const StockAnalysis: React.FC = () => {
 
                 {/* Token / compute summary footer */}
                 {usage && (
-                  <div className="mt-10 pt-6 border-t border-white/5">
-                    <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest mb-3">
+                  <div className="mt-10 pt-6 border-t border-[#D7E2D4]">
+                    <p className="text-[10px] font-black text-[#4F5B54] uppercase tracking-widest mb-3">
                       Compute Summary
                     </p>
                     <div className="flex flex-wrap gap-3">
-                      <div className="flex items-center gap-2 px-4 py-2.5 bg-black/40 rounded-xl border border-white/5">
-                        <Cpu size={14} className="text-[#FF4B4B] shrink-0" />
+                      <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F8FAF6] rounded-xl border border-[#D7E2D4]">
+                        <Cpu size={14} className="text-[#00843D] shrink-0" />
                         <div>
-                          <p className="text-[9px] text-gray-500 uppercase tracking-widest leading-none mb-1">
+                          <p className="text-[9px] text-[#66736B] uppercase tracking-widest leading-none mb-1">
                             Total Tokens
                           </p>
-                          <p className="text-white font-mono font-bold text-sm leading-none">
+                          <p className="text-[#1F2A24] font-mono font-bold text-sm leading-none">
                             {(usage.totalTokenCount || 0).toLocaleString()}
                           </p>
                         </div>
                       </div>
 
                       {usage.promptTokenCount !== undefined && (
-                        <div className="flex items-center gap-2 px-4 py-2.5 bg-black/40 rounded-xl border border-white/5">
+                        <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F8FAF6] rounded-xl border border-[#D7E2D4]">
                           <div>
-                            <p className="text-[9px] text-gray-500 uppercase tracking-widest leading-none mb-1">
+                            <p className="text-[9px] text-[#66736B] uppercase tracking-widest leading-none mb-1">
                               Input
                             </p>
-                            <p className="text-gray-300 font-mono font-bold text-sm leading-none">
+                            <p className="text-[#3D4A43] font-mono font-bold text-sm leading-none">
                               {(usage.promptTokenCount || 0).toLocaleString()}
                             </p>
                           </div>
@@ -572,12 +570,12 @@ export const StockAnalysis: React.FC = () => {
                       )}
 
                       {usage.candidatesTokenCount !== undefined && (
-                        <div className="flex items-center gap-2 px-4 py-2.5 bg-black/40 rounded-xl border border-white/5">
+                        <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F8FAF6] rounded-xl border border-[#D7E2D4]">
                           <div>
-                            <p className="text-[9px] text-gray-500 uppercase tracking-widest leading-none mb-1">
+                            <p className="text-[9px] text-[#66736B] uppercase tracking-widest leading-none mb-1">
                               Output
                             </p>
-                            <p className="text-gray-300 font-mono font-bold text-sm leading-none">
+                            <p className="text-[#3D4A43] font-mono font-bold text-sm leading-none">
                               {(
                                 usage.candidatesTokenCount || 0
                               ).toLocaleString()}
@@ -587,16 +585,16 @@ export const StockAnalysis: React.FC = () => {
                       )}
 
                       {searchQueries.length > 0 && (
-                        <div className="flex items-center gap-2 px-4 py-2.5 bg-black/40 rounded-xl border border-white/5">
+                        <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F8FAF6] rounded-xl border border-[#D7E2D4]">
                           <Search
                             size={14}
-                            className="text-[#FF4B4B] shrink-0"
+                            className="text-[#00843D] shrink-0"
                           />
                           <div>
-                            <p className="text-[9px] text-gray-500 uppercase tracking-widest leading-none mb-1">
+                            <p className="text-[9px] text-[#66736B] uppercase tracking-widest leading-none mb-1">
                               Searches
                             </p>
-                            <p className="text-gray-300 font-mono font-bold text-sm leading-none">
+                            <p className="text-[#3D4A43] font-mono font-bold text-sm leading-none">
                               {searchQueries.length}
                             </p>
                           </div>
@@ -604,16 +602,16 @@ export const StockAnalysis: React.FC = () => {
                       )}
 
                       {groundingSources.length > 0 && (
-                        <div className="flex items-center gap-2 px-4 py-2.5 bg-black/40 rounded-xl border border-white/5">
+                        <div className="flex items-center gap-2 px-4 py-2.5 bg-[#F8FAF6] rounded-xl border border-[#D7E2D4]">
                           <Globe
                             size={14}
-                            className="text-[#FF4B4B] shrink-0"
+                            className="text-[#00843D] shrink-0"
                           />
                           <div>
-                            <p className="text-[9px] text-gray-500 uppercase tracking-widest leading-none mb-1">
+                            <p className="text-[9px] text-[#66736B] uppercase tracking-widest leading-none mb-1">
                               Sources
                             </p>
-                            <p className="text-gray-300 font-mono font-bold text-sm leading-none">
+                            <p className="text-[#3D4A43] font-mono font-bold text-sm leading-none">
                               {groundingSources.length}
                             </p>
                           </div>
@@ -629,18 +627,18 @@ export const StockAnalysis: React.FC = () => {
             <div className="lg:col-span-1 space-y-6">
               {/* Search queries used */}
               {searchQueries.length > 0 && (
-                <div className="bg-black/50 p-6 rounded-2xl border border-white/5">
-                  <h4 className="text-xs font-black text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                <div className="bg-[#FFFFFF] p-6 rounded-2xl border border-[#D7E2D4]">
+                  <h4 className="text-xs font-black text-[#66736B] mb-4 uppercase tracking-widest flex items-center gap-2">
                     <Search size={14} /> Searches Run ({searchQueries.length})
                   </h4>
                   <ul className="space-y-2">
                     {searchQueries.map((q, i) => (
                       <li
                         key={i}
-                        className="text-[11px] text-gray-400 flex items-start gap-2"
+                        className="text-[11px] text-[#66736B] flex items-start gap-2"
                       >
-                        <span className="text-[#FF4B4B] mt-0.5 shrink-0">
-                          {"›"}
+                        <span className="text-[#00843D] mt-0.5 shrink-0">
+                          {">"}
                         </span>
                         <span>{q}</span>
                       </li>
@@ -650,8 +648,8 @@ export const StockAnalysis: React.FC = () => {
               )}
 
               {/* Grounding sources */}
-              <div className="bg-black/50 p-6 rounded-2xl border border-white/5">
-                <h4 className="text-xs font-black text-gray-500 mb-6 uppercase tracking-widest flex items-center gap-2">
+              <div className="bg-[#FFFFFF] p-6 rounded-2xl border border-[#D7E2D4]">
+                <h4 className="text-xs font-black text-[#66736B] mb-6 uppercase tracking-widest flex items-center gap-2">
                   <Globe size={14} /> Sources ({groundingSources.length})
                 </h4>
                 <ul className="space-y-4">
@@ -664,17 +662,17 @@ export const StockAnalysis: React.FC = () => {
                           rel="noopener noreferrer"
                           className="block group"
                         >
-                          <p className="text-sm font-bold text-blue-400 group-hover:underline truncate mb-1">
+                          <p className="text-sm font-bold text-[#0067B1] group-hover:underline truncate mb-1">
                             {s.title}
                           </p>
-                          <p className="text-[10px] text-gray-600 truncate">
+                          <p className="text-[10px] text-[#4F5B54] truncate">
                             {s.uri}
                           </p>
                         </a>
                       </li>
                     ))
                   ) : (
-                    <li className="text-xs text-gray-600 italic">
+                    <li className="text-xs text-[#4F5B54] italic">
                       No external sources cited.
                     </li>
                   )}
