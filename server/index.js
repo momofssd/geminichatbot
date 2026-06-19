@@ -25,6 +25,9 @@ app.post("/api/chat", chatHandler);
 app.post("/api/analyze-stock", analyzeStockHandler);
 app.get("/api/stock-history", getStockHistoryHandler);
 app.delete("/api/stock-history/:id", deleteStockHistoryHandler);
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ ok: true });
+});
 
 // SPA fallback
 app.get(/(.*)/, (req, res) => {
