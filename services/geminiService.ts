@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js";
-import { Attachment, ModelId } from "../types";
+import { Attachment, ModelId, ThinkingConfig } from "../types";
 
 export const streamChat = async (
   modelId: string,
@@ -7,10 +7,18 @@ export const streamChat = async (
   message: string,
   attachments: Attachment[],
   grounding: { search: boolean },
+  thinking: ThinkingConfig,
   userSecret: string,
 ) => {
   const payload = CryptoJS.AES.encrypt(
-    JSON.stringify({ modelId, history, message, attachments, grounding }),
+    JSON.stringify({
+      modelId,
+      history,
+      message,
+      attachments,
+      grounding,
+      thinking,
+    }),
     userSecret,
   ).toString();
 

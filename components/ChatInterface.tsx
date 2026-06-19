@@ -11,7 +11,13 @@ import * as mammoth from "mammoth";
 import React, { useEffect, useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import { streamChat } from "../services/geminiService";
-import { Attachment, ChatMessage, GroundingConfig, ModelId } from "../types";
+import {
+  Attachment,
+  ChatMessage,
+  GroundingConfig,
+  ModelId,
+  ThinkingConfig,
+} from "../types";
 import { MessageBubble } from "./MessageBubble";
 
 export const ChatInterface: React.FC = () => {
@@ -28,6 +34,10 @@ export const ChatInterface: React.FC = () => {
   const [userSecret] = useState((import.meta as any).env.VITE_AES_KEY || "");
   const [grounding, setGrounding] = useState<GroundingConfig>({
     search: false,
+  });
+  const [deepSeekThinking, setDeepSeekThinking] = useState<ThinkingConfig>({
+    enabled: false,
+    effort: "high",
   });
   const isDeepSeekSelected =
     selectedModel === ModelId.DEEPSEEK_V4_FLASH ||
@@ -249,6 +259,7 @@ export const ChatInterface: React.FC = () => {
         userMessage.text,
         userMessage.attachments || [],
         grounding,
+        deepSeekThinking,
         userSecret,
       );
 
@@ -374,6 +385,49 @@ export const ChatInterface: React.FC = () => {
                 <Globe size={14} /> Search
               </label>
             </div>
+
+            {isDeepSeekSelected && (
+              <div className="flex items-center gap-4">
+                <label className="flex items-center gap-2 text-sm text-[#3D4A43] cursor-pointer hover:text-[#1F2A24] transition-colors">
+                  <input
+                    type="checkbox"
+                    checked={deepSeekThinking.enabled}
+                    onChange={() =>
+                      setDeepSeekThinking((t) => ({
+                        ...t,
+                        enabled: !t.enabled,
+                      }))
+                    }
+                    className="accent-[#00843D] w-4 h-4 rounded"
+                  />
+                  Thinking
+                </label>
+
+                <label
+                  className={`flex items-center gap-2 text-sm ${
+                    deepSeekThinking.enabled
+                      ? "text-[#3D4A43]"
+                      : "text-[#7C887F]"
+                  }`}
+                >
+                  <span>Effort:</span>
+                  <select
+                    value={deepSeekThinking.effort}
+                    disabled={!deepSeekThinking.enabled}
+                    onChange={(e) =>
+                      setDeepSeekThinking((t) => ({
+                        ...t,
+                        effort: e.target.value as ThinkingConfig["effort"],
+                      }))
+                    }
+                    className="bg-[#FFFFFF] border border-[#B8C8B3] rounded px-2 py-1 text-[#1F2A24] disabled:bg-[#EEF2EA] disabled:text-[#7C887F] focus:outline-none focus:border-[#00843D]"
+                  >
+                    <option value="high">High</option>
+                    <option value="max">Max</option>
+                  </select>
+                </label>
+              </div>
+            )}
           </div>
         </div>
       </div>

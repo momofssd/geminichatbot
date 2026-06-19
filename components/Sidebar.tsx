@@ -76,7 +76,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             About
           </h3>
           <p className="text-xs text-[#66736B] leading-relaxed">
-            Powered by Gemini 3. Flash for speed, Pro for reasoning.
+            Powered by DeepSeek and Gemini models for chat and analysis.
           </p>
         </div>
       </div>

@@ -40,6 +40,11 @@ export interface GroundingConfig {
   search: boolean;
 }
 
+export interface ThinkingConfig {
+  enabled: boolean;
+  effort: "high" | "max";
+}
+
 declare global {
   interface AIStudio {
     hasSelectedApiKey: () => Promise<boolean>;

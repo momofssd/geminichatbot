@@ -94,10 +94,33 @@ export const buildDeepSeekMessages = ({ history, message, attachments }) => {
   return messages;
 };
 
-export async function* streamDeepSeekChat({ modelId, messages }) {
+const normalizeDeepSeekThinking = (thinking) => {
+  const enabled = thinking?.enabled !== false;
+  const effort = thinking?.effort === "max" ? "max" : "high";
+
+  return { enabled, effort };
+};
+
+export async function* streamDeepSeekChat({ modelId, messages, thinking }) {
   if (!deepSeekApiKey) {
     throw new Error("DS_KEY is not set in environment variables");
   }
+
+  const thinkingConfig = normalizeDeepSeekThinking(thinking);
+  const requestBody = {
+    model: normalizeModelId(modelId),
+    messages,
+    stream: true,
+    stream_options: { include_usage: true },
+    temperature: 0.7,
+    max_tokens: 8192,
+    thinking: {
+      type: thinkingConfig.enabled ? "enabled" : "disabled",
+    },
+    ...(thinkingConfig.enabled
+      ? { reasoning_effort: thinkingConfig.effort }
+      : {}),
+  };
 
   const response = await fetch(DEEPSEEK_CHAT_COMPLETIONS_URL, {
     method: "POST",
@@ -105,14 +128,7 @@ export async function* streamDeepSeekChat({ modelId, messages }) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${deepSeekApiKey}`,
     },
-    body: JSON.stringify({
-      model: normalizeModelId(modelId),
-      messages,
-      stream: true,
-      stream_options: { include_usage: true },
-      temperature: 0.7,
-      max_tokens: 8192,
-    }),
+    body: JSON.stringify(requestBody),
   });
 
   if (!response.ok) {

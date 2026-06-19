@@ -27,7 +27,7 @@ export const chatHandler = async (req, res) => {
         .status(400)
         .json({ error: "Failed to decrypt payload or empty result" });
 
-    const { modelId, history, message, attachments, grounding } =
+    const { modelId, history, message, attachments, grounding, thinking } =
       JSON.parse(decodedPayload);
 
     if (isDeepSeekModel(modelId)) {
@@ -37,7 +37,11 @@ export const chatHandler = async (req, res) => {
       res.setHeader("Cache-Control", "no-cache");
       res.setHeader("Connection", "keep-alive");
 
-      for await (const chunkText of streamDeepSeekChat({ modelId, messages })) {
+      for await (const chunkText of streamDeepSeekChat({
+        modelId,
+        messages,
+        thinking,
+      })) {
         const encoded = CryptoJS.AES.encrypt(chunkText, AES_KEY).toString();
         res.write(`data: ${JSON.stringify({ t: encoded })}\n\n`);
       }
