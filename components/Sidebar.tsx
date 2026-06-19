@@ -2,7 +2,6 @@ import {
   MessageSquare,
   PlusCircle,
   Sparkles,
-  TrendingUp,
 } from "lucide-react";
 import React from "react";
 import { AppMode } from "../types";
@@ -56,17 +55,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <span className="hidden md:block">Chat</span>
           </button>
 
-          <button
-            onClick={() => setMode(AppMode.STOCK_ANALYSIS)}
-            className={`w-full flex items-center gap-3 px-3 py-2 rounded-md transition-all text-sm ${
-              currentMode === AppMode.STOCK_ANALYSIS
-                ? "bg-[#EEF5EA] text-[#005F2F] font-semibold"
-                : "text-[#3D4A43] hover:bg-[#EEF5EA]"
-            }`}
-          >
-            <TrendingUp className="w-4 h-4" />
-            <span className="hidden md:block">Stock Analysis</span>
-          </button>
         </div>
       </div>
 

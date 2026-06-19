@@ -8,7 +8,6 @@ export enum ModelId {
 
 export enum AppMode {
   CHAT = "chat",
-  STOCK_ANALYSIS = "stock_analysis",
 }
 
 export interface UsageMetadata {

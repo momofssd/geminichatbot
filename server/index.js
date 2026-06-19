@@ -4,11 +4,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { port } from "./config.js";
 import { chatHandler } from "./routes/chat.js";
-import {
-  analyzeStockHandler,
-  deleteStockHistoryHandler,
-  getStockHistoryHandler,
-} from "./routes/stock.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,11 +17,11 @@ app.use(express.static(path.join(__dirname, "../dist")));
 
 // API Routes
 app.post("/api/chat", chatHandler);
-app.post("/api/analyze-stock", analyzeStockHandler);
-app.get("/api/stock-history", getStockHistoryHandler);
-app.delete("/api/stock-history/:id", deleteStockHistoryHandler);
 app.get("/api/health", (req, res) => {
   res.status(200).json({ ok: true });
+});
+app.use("/api", (req, res) => {
+  res.status(404).json({ error: "API route not found" });
 });
 
 // SPA fallback

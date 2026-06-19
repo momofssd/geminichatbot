@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js";
-import { Attachment, ModelId, ThinkingConfig } from "../types";
+import { Attachment, ThinkingConfig } from "../types";
 
 export const streamChat = async (
   modelId: string,
@@ -73,59 +73,5 @@ export const streamChat = async (
         }
       }
     })() as unknown as AsyncIterable<any>,
-  };
-};
-
-export const getStockHistory = async () => {
-  const response = await fetch("/api/stock-history");
-  if (!response.ok) throw new Error("Failed to fetch stock history");
-  return response.json();
-};
-
-export const deleteStockHistory = async (id: string) => {
-  const response = await fetch(`/api/stock-history/${id}`, {
-    method: "DELETE",
-  });
-  if (!response.ok) throw new Error("Failed to delete stock history");
-  return response.json();
-};
-
-export const analyzeStock = async (
-  ticker: string,
-  userSecret: string,
-  saveToHistory: boolean = false,
-  modelId: string = ModelId.GEMINI_31_PRO,
-) => {
-  const payload = CryptoJS.AES.encrypt(
-    JSON.stringify({ ticker, saveToHistory, modelId }),
-    userSecret,
-  ).toString();
-
-  const response = await fetch("/api/analyze-stock", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ p: payload }),
-  });
-
-  const data = await response.json();
-  if (data.error) throw new Error(data.error);
-
-  if (data.t) {
-    const decrypted = CryptoJS.AES.decrypt(data.t, userSecret).toString(
-      CryptoJS.enc.Utf8,
-    );
-    const parsedData = JSON.parse(decrypted);
-
-    return {
-      text: parsedData.candidates?.[0]?.content?.parts?.[0]?.text || "",
-      candidates: parsedData.candidates,
-      usage: parsedData.usageMetadata,
-    };
-  }
-
-  return {
-    text: data.candidates?.[0]?.content?.parts?.[0]?.text || "",
-    candidates: data.candidates,
-    usage: data.usageMetadata,
   };
 };

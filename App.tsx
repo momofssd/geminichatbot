@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ChatInterface } from "./components/ChatInterface";
 import { Sidebar } from "./components/Sidebar";
-import { StockAnalysis } from "./components/StockAnalysis";
 import { AppMode } from "./types";
 
 function App() {
@@ -25,11 +24,6 @@ function App() {
           className={`h-full ${currentMode === AppMode.CHAT ? "block" : "hidden"}`}
         >
           <ChatInterface key={chatSessionKey} />
-        </div>
-        <div
-          className={`h-full ${currentMode === AppMode.STOCK_ANALYSIS ? "block" : "hidden"}`}
-        >
-          <StockAnalysis />
         </div>
       </main>
     </div>
