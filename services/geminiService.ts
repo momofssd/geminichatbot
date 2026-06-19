@@ -21,7 +21,14 @@ export const streamChat = async (
   });
 
   if (!response.ok) {
-    throw new Error("Failed to connect to chat backend");
+    let errorMessage = "Failed to connect to chat backend";
+    try {
+      const data = await response.json();
+      if (data.error) errorMessage = data.error;
+    } catch {
+      // Keep the generic connection error when the server did not return JSON.
+    }
+    throw new Error(errorMessage);
   }
 
   const reader = response.body?.getReader();

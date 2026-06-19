@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const apiKey = process.env.GEMINI_API_KEY;
+export const deepSeekApiKey = process.env.DS_KEY;
 export const AES_KEY = process.env.AES_KEY;
 export const port = process.env.PORT || 3001;
 

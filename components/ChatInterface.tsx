@@ -18,7 +18,7 @@ export const ChatInterface: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "model",
-      text: "Hi! I'm your Gemini Assistant. I can help with analysis, coding, and reading documents (PDF, Word, Excel).",
+      text: "Hi! I'm your AI assistant. I can help with analysis, coding, and reading documents (PDF, Word, Excel).",
     },
   ]);
   const [inputText, setInputText] = useState("");
@@ -29,6 +29,9 @@ export const ChatInterface: React.FC = () => {
   const [grounding, setGrounding] = useState<GroundingConfig>({
     search: false,
   });
+  const isDeepSeekSelected =
+    selectedModel === ModelId.DEEPSEEK_V4_FLASH ||
+    selectedModel === ModelId.DEEPSEEK_V4_PRO;
 
   const [attachments, setAttachments] = useState<Attachment[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
@@ -55,6 +58,12 @@ export const ChatInterface: React.FC = () => {
         Math.min(textareaRef.current.scrollHeight, 200) + "px";
     }
   }, [inputText]);
+
+  useEffect(() => {
+    if (isDeepSeekSelected && grounding.search) {
+      setGrounding((g) => ({ ...g, search: false }));
+    }
+  }, [isDeepSeekSelected, grounding.search]);
 
   const processFile = async (file: File) => {
     setIsProcessingFile(true);
@@ -285,7 +294,10 @@ export const ChatInterface: React.FC = () => {
         const newArr = [...prev];
         const lastMsg = newArr[newArr.length - 1];
         lastMsg.isLoading = false;
-        lastMsg.text = "Error: Failed to process request.";
+        lastMsg.text =
+          error instanceof Error
+            ? `Error: ${error.message}`
+            : "Error: Failed to process request.";
         return newArr;
       });
     } finally {
@@ -335,14 +347,25 @@ export const ChatInterface: React.FC = () => {
                   Gemini 3.1 Flash Lite
                 </option>
                 <option value={ModelId.GEMINI_31_PRO}>Gemini 3.1 Pro</option>
+                <option value={ModelId.DEEPSEEK_V4_FLASH}>
+                  DeepSeek V4 Flash
+                </option>
+                <option value={ModelId.DEEPSEEK_V4_PRO}>DeepSeek V4 Pro</option>
               </select>
             </div>
 
             <div className="flex gap-4">
-              <label className="flex items-center gap-2 text-sm cursor-pointer hover:text-white text-gray-300 transition-colors">
+              <label
+                className={`flex items-center gap-2 text-sm transition-colors ${
+                  isDeepSeekSelected
+                    ? "cursor-not-allowed text-gray-600"
+                    : "cursor-pointer hover:text-white text-gray-300"
+                }`}
+              >
                 <input
                   type="checkbox"
                   checked={grounding.search}
+                  disabled={isDeepSeekSelected}
                   onChange={() =>
                     setGrounding((g) => ({ ...g, search: !g.search }))
                   }
@@ -422,7 +445,7 @@ export const ChatInterface: React.FC = () => {
               onChange={(e) => setInputText(e.target.value)}
               onKeyDown={handleKeyDown}
               onPaste={handlePaste}
-              placeholder="Message Gemini... (Shift+Enter for new line)"
+              placeholder="Message assistant... (Shift+Enter for new line)"
               className="w-full bg-[#262730] text-white placeholder-gray-500 rounded-md px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#FF4B4B] border border-transparent pr-10 resize-none overflow-hidden min-h-[50px] max-h-[200px]"
               disabled={isStreaming}
               rows={1}

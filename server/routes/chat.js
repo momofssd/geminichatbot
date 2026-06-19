@@ -1,5 +1,12 @@
 import CryptoJS from "crypto-js";
-import { genAI, GROUNDING_TOOL, normalizeModelId } from "../ai.js";
+import {
+  buildDeepSeekMessages,
+  genAI,
+  GROUNDING_TOOL,
+  isDeepSeekModel,
+  normalizeModelId,
+  streamDeepSeekChat,
+} from "../ai.js";
 import { AES_KEY } from "../config.js";
 
 export const chatHandler = async (req, res) => {
@@ -22,6 +29,23 @@ export const chatHandler = async (req, res) => {
 
     const { modelId, history, message, attachments, grounding } =
       JSON.parse(decodedPayload);
+
+    if (isDeepSeekModel(modelId)) {
+      const messages = buildDeepSeekMessages({ history, message, attachments });
+
+      res.setHeader("Content-Type", "text/event-stream");
+      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("Connection", "keep-alive");
+
+      for await (const chunkText of streamDeepSeekChat({ modelId, messages })) {
+        const encoded = CryptoJS.AES.encrypt(chunkText, AES_KEY).toString();
+        res.write(`data: ${JSON.stringify({ t: encoded })}\n\n`);
+      }
+
+      res.write("data: [DONE]\n\n");
+      res.end();
+      return;
+    }
 
     const model = genAI.getGenerativeModel({ model: normalizeModelId(modelId) });
 
